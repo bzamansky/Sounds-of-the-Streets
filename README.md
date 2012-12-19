@@ -1,8 +1,8 @@
 BZ-SD
 =====
 
-***Batya Zamansky - Sarah Duncan***
-****Batya &sdot; Zachary &sdot; Sarah &sdot; Denis****
+<h3>Batya Zamansky - Sarah Duncan</h3>
+<h4>Batya &sdot; Zachary &sdot; Sarah &sdot; Denis</h4>
 
 **Project: Musical Maps**
 * Plays a song based on current (or entered) location
