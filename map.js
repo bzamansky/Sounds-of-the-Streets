@@ -1,6 +1,9 @@
 var map;
 var geocoder;
 var infowindow;
+var markersArray = [];
+var selected;
+
 
 function initialize() {
 //Initializes the map.
@@ -26,21 +29,31 @@ function placeMarker(location) {
         position: location,
         map: map
     });
+    selected = marker;
+    markersArray.push(marker);
     infowindow = new google.maps.InfoWindow(
 	{ content: "" +marker.position,
           size: new google.maps.Size(50,50)
 	});
     google.maps.event.addListener(marker, 'click', function(){
+	selected = marker;
 	infowindow.open(map,marker);
 	codeLatLng(marker);
     });
     
 }
 
-function removeMarker(){
-    markersArray[markersArray.length-1].setMap(null);
+function removeMarkers(){
+    if(markersArray){
+	for (i in markersArray){
+	    markersArray[i].setMap(null);
+	}
+    }
 }
 
+function removeMark(){
+    selected.setMap(null);
+}
 
 function codeLatLng(marker) {
 //This allows you to click on a marker and return it's address.
@@ -63,3 +76,11 @@ function codeLatLng(marker) {
 
     return undefined;
 }
+
+
+
+
+$(document).ready(function(){
+    $("#clear").click(removeMarkers);
+    $("#remove").click(removeMark);
+});
