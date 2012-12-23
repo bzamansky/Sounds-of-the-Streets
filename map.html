@@ -19,7 +19,21 @@
         };
         var map = new google.maps.Map(document.getElementById("map_canvas"),
             mapOptions);
+      var marker = new google.maps.Marker({
+        position: location
+        map: map,
+        title: 'Click to zoom'
+      });
+      google.maps.event.addListener(marker, 'click', function(event) {
+        map.setZoom(8);
+        placeMarker(event.latLng);
+        console.log(marker.getPosition());
+      });
+
+
       }
+
+    
     </script>
   </head>
   <body onload="initialize()">
