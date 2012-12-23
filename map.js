@@ -24,7 +24,6 @@ function placeMarker(location) {
           size: new google.maps.Size(50,50)
 	});
     google.maps.event.addListener(marker, 'click', function() {
-	codeLatLng();
     });
     
 }
