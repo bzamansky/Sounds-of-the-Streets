@@ -3,10 +3,12 @@ var geocoder;
 var infowindow;
 
 function initialize() {
+//Initializes the map.
+
     geocoder = new google.maps.Geocoder();
     var mapOptions = {
         center: new google.maps.LatLng(40.713956,-74.377441),
-        zoom: 8,
+        zoom: 11,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     map = new google.maps.Map(document.getElementById("map_canvas"),
@@ -18,6 +20,8 @@ function initialize() {
 }
 
 function placeMarker(location) {
+//This allows you to print a marker.
+
     var marker = new google.maps.Marker({
         position: location,
         map: map
@@ -28,29 +32,27 @@ function placeMarker(location) {
 	});
     google.maps.event.addListener(marker, 'click', function() {
 	codeLatLng(marker);
-//	infowindow.open(map,marker);
-    });
-    
+    });  
 }
 
 function codeLatLng(marker) {
-    console.log( marker.position["Ya"]);
-    console.log(marker.position["Za"]);
-//    var input = marker.position;
-//    var latlngStr = input.split(",");
+//This allows you to click on a marker and return it's address.
+
     var lat = marker.position["Ya"];
     var lng = marker.position["Za"];
     var latlng = new google.maps.LatLng(lat, lng);
     geocoder.geocode({'latLng': latlng}, function(results, status) {
 	if (status == google.maps.GeocoderStatus.OK) {
-          if (results[1]) {
-              console.log(results[1]);
-              infowindow.setContent(results[1].formatted_address);
+          if (results[0]) {
+              infowindow.setContent(results[0].formatted_address);
               infowindow.open(map, marker);
+	      return results[0].formatted_address;
           }
 	}
        else {
           alert("Geocoder failed due to: " + status);
       }
     });
+
+    return undefined;
 }
