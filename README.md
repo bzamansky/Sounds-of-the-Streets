@@ -9,7 +9,7 @@ BZ-SD
 * Howard announces the song name, artist, etc.
 * Lyric Sidebar
 * Images based on key words in the song
-* Simple Visualizer
+* Simple Visualizer  
 * Link to Pandora playlist based on the current song
 
 **Tools**
