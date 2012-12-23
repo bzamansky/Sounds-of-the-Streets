@@ -23,7 +23,8 @@ function placeMarker(location) {
 	{ content: "" +marker.position,
           size: new google.maps.Size(50,50)
 	});
-    google.maps.event.addListener(marker, 'click', function() {
+    google.maps.event.addListener(marker, 'click', function(){
+	infowindow.open(map,marker);
     });
     
 }
