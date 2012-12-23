@@ -1,5 +1,5 @@
 var map;
-var marker;
+var geocoder;
 
 function initialize() {
     var mapOptions = {
@@ -15,7 +15,7 @@ function initialize() {
 }
 
 function placeMarker(location) {
-    marker = new google.maps.Marker({
+    var marker = new google.maps.Marker({
         position: location,
         map: map
     });
@@ -24,8 +24,32 @@ function placeMarker(location) {
           size: new google.maps.Size(50,50)
 	});
     google.maps.event.addListener(marker, 'click', function() {
-	infowindow.open(map,marker);
+	codeLatLng();
     });
     
 }
 
+function removeMarker(){
+    markersArray[markersArray.length-1].setMap(null);
+}
+
+function codeLatLng() {
+    var input = document.getElementById("latlng").value;
+    var latlngStr = input.split(",");
+    var lat = parseFloat(latlngStr[0]);
+    var lng = parseFloat(latlngStr[1]);
+    var latlng = new google.maps.LatLng(lat, lng);
+    geocoder.geocode({'latLng': latlng}, function(results, status) {
+	if (status == google.maps.GeocoderStatus.OK) {
+	    console.log(results);
+          if (results[1]) {
+              console.log(results);
+              infowindow.setContent(results[1].formatted_address);
+              infowindow.open(map, marker);
+          }
+	}
+       else {
+          alert("Geocoder failed due to: " + status);
+      }
+    });
+}
