@@ -15,4 +15,4 @@ def getSong(k,name):
     return result["results"]["trackmatches"]["track"][0]["url"]
 
 
-print getSong(key, "it will rain")
+
