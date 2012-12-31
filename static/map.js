@@ -57,7 +57,7 @@ function removeMark(){
 
 function codeLatLng(marker) {
 //This allows you to click on a marker and return it's address.
-
+    var address = "";
     var lat = marker.position["Ya"];
     var lng = marker.position["Za"];
     var latlng = new google.maps.LatLng(lat, lng);
@@ -66,14 +66,17 @@ function codeLatLng(marker) {
           if (results[0]) {
               infowindow.setContent(results[0].formatted_address);
               infowindow.open(map, marker);
-	      return results[0].formatted_address;
+	      address = results[0].formatted_address;
+	      $.getJSON("/update", {address:address},function(data){
+		  $("#address").text(data);
+	      });  
           }
 	}
        else {
           alert("Geocoder failed due to: " + status);
       }
     });
-
+    
     return undefined;
 }
 
