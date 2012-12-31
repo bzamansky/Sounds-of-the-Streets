@@ -68,7 +68,11 @@ function codeLatLng(marker) {
               infowindow.open(map, marker);
 	      address = results[0].formatted_address;
 	      $.getJSON("/update", {address:address},function(data){
-		  $("#address").text(data);
+		  $("#address").text(data['address']);
+		  var ref = $("<a></a>");
+		  ref.attr('href',data['url']);
+		  ref.text(data['url']);
+		  $("#url").append(ref);
 	      });  
           }
 	}

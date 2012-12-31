@@ -1,3 +1,4 @@
+
 import utils
 import map_utils
 import json, urllib2
@@ -18,7 +19,11 @@ def home():
 @app.route("/update")
 def update():
     address = request.args.get('address',"line goes here")
-    return json.dumps(address)
+    url = utils.getSong(Last_key, address)
+    print url
+    r = {'address':address, 'url':url}
+    return json.dumps(r)
+
 
     
 if __name__ == '__main__':
