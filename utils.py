@@ -8,13 +8,17 @@ def getSong(k,name):
     
     title = name.split()
     track = ""
+    #the next line cuts out the first 2 parts of the address so we can see this works when you click on 42nd street
+    title = title[2:4]
     for item in title:
         track = track + item + "+"
     track = track[:-1]
     track = urllib2.quote(track)
     url = 'http://ws.audioscrobbler.com/2.0/?method=track.search&track="%s"&api_key=%s&format=json'%(track,k)
+    print url
     request = urllib2.urlopen(url)
     result = json.loads(request.read())
+    print result
     try:
         x = result["results"]["trackmatches"]["track"][0]["url"]
     except:

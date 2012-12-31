@@ -69,6 +69,7 @@ function codeLatLng(marker) {
 	      address = results[0].formatted_address;
 	      $.getJSON("/update", {address:address},function(data){
 		  $("#address").text(data['address']);
+		  $("#url").empty();
 		  var ref = $("<a></a>");
 		  ref.attr('href',data['url']);
 		  ref.text(data['url']);
