@@ -10,17 +10,16 @@ app.secret_key="blah"
 Last_key= "0946dbffa1b5b7ad9c4dc855be73398f"
 Map_key = "AIzaSyDm3LFbtgPrB8jtcruyGlf9ED-tidYvYrA"
 
-@app.route("/")
+@app.route("/", methods = ["GET"])
 def home():
     s = map_utils.source()
     address = "default"
     return render_template("map.html", address=address, s=s)
 
-@app.route("/update")
+@app.route("/update", methods = ["GET"])
 def update():
     address = request.args.get('address',"line goes here")
     url = utils.getSong(Last_key, address)
-    print url
     r = {'address':address, 'url':url}
     return json.dumps(r)
 

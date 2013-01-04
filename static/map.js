@@ -66,7 +66,7 @@ function codeLatLng(marker) {
           if (results[0]) {
               infowindow.setContent(results[0].formatted_address);
               infowindow.open(map, marker);
-	      address = results[0].formatted_address;
+	      //address = results[0].formatted_address;
 
 	      hi = [];
 	      for (var i = 0; i < results.length; i++){
@@ -74,6 +74,7 @@ function codeLatLng(marker) {
 		  address = address + results[i].formatted_address + '<br/>';
 		  console.log(hi[i]);
 	      }
+	      //address = hi;
 	      
 	      $.getJSON("/update", {address:address},function(data){
 		  $("#address").html(data['address']);
