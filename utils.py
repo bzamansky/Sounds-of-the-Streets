@@ -9,7 +9,7 @@ def getSong(k,name):
     title = name.split()
     track = ""
     #the next line cuts out the first 2 parts of the address so we can see this works when you click on 42nd street
-    title = title[2:4]
+    #title = title[2:4]
     for item in title:
         track = track + item + "+"
     track = track[:-1]
