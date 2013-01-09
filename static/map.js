@@ -71,7 +71,7 @@ function codeLatLng(marker) {
 	      hi = [];
 	      for (var i = 0; i < results.length; i++){
 		  hi[i] = results[i].formatted_address;
-		  address = address + results[i].formatted_address + '<br/>';
+		  address = address + results[i].formatted_address + '#';
 		  console.log(hi[i]);
 	      }
 	      //address = hi;
