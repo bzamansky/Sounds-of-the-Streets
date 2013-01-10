@@ -24,7 +24,6 @@ def getSong(k,name):
     except:
         x = "http://www.last.fm/music/Rick+Astley/_/Never+Gonna+Give+You+Up?ac=never+gonna+give+you+"
     return x
-import json, urllib2
 
 
 def getSong2(k,names):
