@@ -31,7 +31,9 @@
     
     <button id="nextVideo" type ="button">next video </button>
     <script type="text/javascript">
-      $("#nextVideo").click(function(){console.log("pressed"); $("#player").attr("src","http://www.youtube.com/embed/FavUpD_IjVY?enablejsapi=1&origin=http://example.com");});
+      listOfVids = ["FavUpD_IjVY","hYWHJwyO5Gs","SbUBMklQSVU"];
+      i = 0;
+      $("#nextVideo").click(function(){console.log(i);console.log("pressed"); $("#player").attr("src","http://www.youtube.com/embed/" + listOfVids[i] + "?enablejsapi=1&origin=http://example.com"); i = i+1;});
       
       
       
