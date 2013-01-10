@@ -1,4 +1,3 @@
-
 import utils
 import map_utils
 import json, urllib2
@@ -10,21 +9,19 @@ app.secret_key="blah"
 Last_key= "0946dbffa1b5b7ad9c4dc855be73398f"
 Map_key = "AIzaSyDm3LFbtgPrB8jtcruyGlf9ED-tidYvYrA"
 
-@app.route("/")
+@app.route("/", methods = ["GET"])
 def home():
     s = map_utils.source()
     address = "default"
     return render_template("map.html", address=address, s=s)
 
-@app.route("/update")
+@app.route("/update", methods = ["GET"])
 def update():
     address = request.args.get('address',"line goes here")
-    url = utils.getSong(Last_key, address)
-    print url
+    names = address.split('#')
+    url = utils.getSong2(Last_key, names)
     r = {'address':address, 'url':url}
     return json.dumps(r)
-
-
     
 if __name__ == '__main__':
     app.run(debug = True, port = 5000)
