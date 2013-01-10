@@ -20,7 +20,7 @@ def update():
     address = request.args.get('address',"line goes here")
     names = address.split('#')
     url = utils.getSong2(Last_key, names)
-    r = {'address':address, 'url':url}
+    r = {'address':names[0], 'url':url}
     return json.dumps(r)
     
 if __name__ == '__main__':
