@@ -21,8 +21,8 @@ def youtube_search(options):
   ).execute()
   
   videos = []
-  channels = []
-  playlists = []
+#  channels = []
+#  playlists = []
 
 #[u'thumbnails', u'channelId', u'description', u'publishedAt', u'title']
 
@@ -34,9 +34,9 @@ def youtube_search(options):
     #print item
     try:
       vidID = item['id']['videoId']
-      break
+      videos.append(vidID)
     except:
-      print "ERROR, VIDEO ID HAD AN ERROR SO WE'RE GIVING YOU THE LLAMA SONG"
+      print "ERROR, VIDEO ID HAD AN ERROR SO WE'RE GIVING YOU THE LL"
       vidID = "KMYN4djSq7o"
   #print "####STUFF THAT GOES AFTER####"
   for search_result in search_response.get("items", []):
