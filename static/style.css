@@ -1,3 +1,10 @@
-html { height: 100% }
-body { height: 100%; margin: 0; padding: 0 }
-#map_canvas { height: 100% }
+html { height: 100%; }
+body { height: 100%; margin: 0; padding: 1%; }
+
+div#map_canvas { width: 50%; height: 75%; float: left; }
+
+div#youtube    { width: 49%; height: 75%; float: right; }
+
+div#info       { width: 46%; height: 16%; padding: 2%; float: left; background: #BBB; }
+
+div#controls   { width: 46%; height: 20%; float: right; padding: 0 1%;  background: #999; }
