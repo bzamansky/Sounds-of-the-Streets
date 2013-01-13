@@ -18,10 +18,10 @@ def getSong(k,name):
     track = track[:-1]
     track = urllib2.quote(track)
     url = 'http://ws.audioscrobbler.com/2.0/?method=track.search&track="%s"&api_key=%s&format=json'%(track,k)
-    print url
+    #print url
     request = urllib2.urlopen(url)
     result = json.loads(request.read())
-    print result
+    #print result
     try:
         x = result["results"]["trackmatches"]["track"][0]["url"]
     except:
@@ -58,7 +58,7 @@ def getSong2(k,names):
 
 def getArtistTitle(result):
     artistTitle = result['artist'] + " " + result['name']
-    print artistTitle
+    #print artistTitle
     return artistTitle
 
 

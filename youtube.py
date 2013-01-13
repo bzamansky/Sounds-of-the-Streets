@@ -36,7 +36,7 @@ def youtube_search(options):
       vidID = item['id']['videoId']
       videos.append(vidID)
     except:
-      print "ERROR, VIDEO ID HAD AN ERROR SO WE'RE GIVING YOU A COMPLIMENTARY VIDEO"
+      #print "ERROR, VIDEO ID HAD AN ERROR SO WE'RE GIVING YOU A COMPLIMENTARY VIDEO"
       vidID = "UJKythlXAIY"
   #print "####STUFF THAT GOES AFTER####"
   #for search_result in search_response.get("items", []):
@@ -55,7 +55,7 @@ def youtube_search(options):
  # print "Videos:\n", "\n".join(videos), "\n"
  # print "Channels:\n", "\n".join(channels), "\n"
  # print "Playlists:\n", "\n".join(playlists), "\n"
-  print videos
+  #print videos
   return videos
 
 def makeParse(name):
@@ -66,9 +66,9 @@ def makeParse(name):
     help="Max results", default=25)
   (options, args) = parser.parse_args()
   options.q = name
-  print "THIS IS THE TITLE I WANT TO GO IN"
-  print options.q
+  #print "THIS IS THE TITLE I WANT TO GO IN"
+  #print options.q
   return youtube_search(options)
 
 
-print makeParse("New York, New York")
+#print makeParse("New York, New York")
