@@ -70,8 +70,13 @@ function codeLatLng(marker) {
 
 	      hi = [];
 	      for (var i = 0; i < results.length; i++){
-		  hi[i] = results[i].formatted_address;
-		  address = address + results[i].formatted_address + '#';
+		  pickle = []; //pickle is a list of strings of parts of the address
+		  for(var j = 1; j < 6; j++){
+		      var index = 0;
+		      pickle[index] = results[i].address_components[j].long_name;
+		      index++;
+		  }
+		  hi[i] = pickle;
 		  console.log(hi[i]);
 	      }
 	      //address = hi;
