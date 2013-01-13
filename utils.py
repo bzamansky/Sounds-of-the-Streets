@@ -42,7 +42,7 @@ def getSong2(k,names):
         for item in title:
             track = track + item + "+"
         track = track[:-1]
-        track = urllib2.quote(track)
+        track = urllib2.quote(track.encode('utf8'))
         url = 'http://ws.audioscrobbler.com/2.0/?method=track.search&track="%s"&api_key=%s&format=json'%(track,k)
        # print url
         request = urllib2.urlopen(url)
