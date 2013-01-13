@@ -87,7 +87,8 @@ function codeLatLng(marker) {
 		  $("#AT").append(data['artist']);
 		  $("#vidId").empty();
 		  $("#vidId").append(data['vidId']);
-		  addVideo(data['vidId']);
+		  addVidList(data['vidId']);
+		  addVideo(data['vidId'][0]);
 	      });  
           }
 	}
