@@ -21,9 +21,9 @@ def update():
     address = request.args.get('address',"line goes here")
     names = address.split('#')
     song = utils.getSong2(Last_key,names)
-    print song
     url = song[0]
     artist = song[1]
+    print artist
     r = {'address':names[0], 'url':url, 'artist':artist }
     return json.dumps(r)
     
@@ -31,4 +31,3 @@ if __name__ == '__main__':
     app.run(debug = True, port = 5000)
 
 
-#just need another line for a sec
