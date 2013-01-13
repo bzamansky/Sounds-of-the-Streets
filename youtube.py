@@ -24,16 +24,26 @@ def youtube_search(options):
   channels = []
   playlists = []
 
+#[u'thumbnails', u'channelId', u'description', u'publishedAt', u'title']
+
+
+  results = search_response.get("items",[])
+  print "####TITLE THEN VIDEOID####"
+  print results[0]['snippet']['title']
+  print results[0]['id']['videoId']
+  print "####STUFF THAT GOES AFTER####"
   for search_result in search_response.get("items", []):
-    if search_result["id"]["kind"] == "youtube#video":
-      videos.append("%s (%s)" % (search_result["snippet"]["title"],
-                                 search_result["id"]["videoId"]))
-    elif search_result["id"]["kind"] == "youtube#channel":
-      channels.append("%s (%s)" % (search_result["snippet"]["title"],
-                                   search_result["id"]["channelId"]))
-    elif search_result["id"]["kind"] == "youtube#playlist":
-      playlists.append("%s (%s)" % (search_result["snippet"]["title"],
-                                    search_result["id"]["playlistId"]))
+    #  print search_result['snippet']["title"]
+    #  print search_result['snippet']['thumbnails']['default']['url']
+      if search_result["id"]["kind"] == "youtube#video":
+          videos.append("%s (%s)" % (search_result["snippet"]["title"],
+                                     search_result["id"]["videoId"]))
+      elif search_result["id"]["kind"] == "youtube#channel":
+          channels.append("%s (%s)" % (search_result["snippet"]["title"],
+                                       search_result["id"]["channelId"]))
+      elif search_result["id"]["kind"] == "youtube#playlist":
+          playlists.append("%s (%s)" % (search_result["snippet"]["title"],
+                                        search_result["id"]["playlistId"]))
 
   print "Videos:\n", "\n".join(videos), "\n"
   print "Channels:\n", "\n".join(channels), "\n"
