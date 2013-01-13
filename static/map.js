@@ -19,7 +19,6 @@ function initialize() {
     google.maps.event.addListener(map, 'click', function(event) {
         placeMarker(event.latLng);
     });
-
 }
 
 function placeMarker(location) {
@@ -56,6 +55,59 @@ function removeMarkers(){
 function removeMark(){
     selected.setMap(null);
 }
+
+
+function addressToLatLng(address){
+    geocoder.geocode( {'address':address}, function(results, status){
+	if (status == google.maps.GeocoderStatus.OK){
+	    console.log(results[0].geometry.location);
+	    return results[0].geometry.location;
+	}
+	else{
+	    alert("Geocode was not successful for the following reason: " + status)
+	}
+    });
+}
+
+function markerAtAddress(){
+    address = $("#textbox").attr("value");
+    console.log(address);
+    newAddress = addressToLatLng(address);
+    console.log(newAddress);
+    var lat = newAddress["Ya"];
+    var lng = newAddress["Za"];
+    var latlng = new google.maps.LatLng(lat, lng);
+    removeMarkers();
+    var marker = new google.maps.Marker({
+        position: newAddress
+        map: map
+	center: latlng
+    });  
+
+    google.maps.event.addListener(marker, 'click', function(){
+	selected = marker;
+	console.log(marker);
+	infowindow.open(map,marker);
+	codeLatLng(marker);
+    });
+    $.getJSON("/update", {address:address},function(data){
+	$("#address").html(data['address']);
+	$("#url").empty();
+	var ref = $("<a></a>");
+	ref.attr('href',data['url']);
+	ref.text(data['url']);
+	$("#url").append(ref);
+	$("#AT").empty();
+	$("#AT").append(data['artist']);
+	$("#vidId").empty();
+	$("#vidId").append(data['vidId']);
+	addVidList(data['vidId']);
+	addVideo(data['vidId'][0]);
+    });  
+
+}
+
+
 
 function codeLatLng(marker) {
 //This allows you to click on a marker and return it's address.
@@ -108,4 +160,5 @@ function codeLatLng(marker) {
 $(document).ready(function(){
     $("#clear").click(removeMarkers);
     $("#remove").click(removeMark);
+    $("#submit").click(markerAtAddress);
 });
