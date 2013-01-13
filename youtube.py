@@ -36,8 +36,8 @@ def youtube_search(options):
       vidID = item['id']['videoId']
       videos.append(vidID)
     except:
-      print "ERROR, VIDEO ID HAD AN ERROR SO WE'RE GIVING YOU THE LL"
-      vidID = "KMYN4djSq7o"
+      print "ERROR, VIDEO ID HAD AN ERROR SO WE'RE GIVING YOU A COMPLIMENTARY VIDEO"
+      vidID = "UJKythlXAIY"
   #print "####STUFF THAT GOES AFTER####"
   for search_result in search_response.get("items", []):
     #  print search_result['snippet']["title"]
@@ -71,4 +71,4 @@ def makeParse(name):
   return youtube_search(options)
 
 
-print makeParse("Joss Stone Music (live, Bowery Ballroom, New York, NY, USA)")
+#print makeParse("Joss Stone Music (live, Bowery Ballroom, New York, NY, USA)")
