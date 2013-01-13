@@ -31,6 +31,7 @@ def youtube_search(options):
   print "####TITLE THEN VIDEOID####"
   print results[0]['snippet']['title']
   print results[0]['id']['videoId']
+  vidID = results[0]['id']['videoId']
   print "####STUFF THAT GOES AFTER####"
   for search_result in search_response.get("items", []):
     #  print search_result['snippet']["title"]
@@ -48,7 +49,7 @@ def youtube_search(options):
   print "Videos:\n", "\n".join(videos), "\n"
   print "Channels:\n", "\n".join(channels), "\n"
   print "Playlists:\n", "\n".join(playlists), "\n"
-
+  return vidID
 
 def makeParse(name):
   parser = OptionParser()
