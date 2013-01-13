@@ -70,16 +70,15 @@ function codeLatLng(marker) {
 
 	      hi = [];
 	      for (var i = 0; i < results.length; i++){
-		  pickle = []; //pickle is a list of strings of parts of the address
 		  for(var j = 1; j < 6; j++){
-		      var index = 0;
-		      pickle[index] = results[i].address_components[j].long_name;
-		      index++;
+		      pickle = "";
+		      pickle = pickle + results[i].address_components[j].long_name + ";";
 		  }
 		  hi[i] = pickle;
 		  console.log(hi[i]);
+		  address = address + hi[i] + "#";
 	      }
-	      //address = hi;
+	      //	      address = hi;
 	      
 	      $.getJSON("/update", {address:address},function(data){
 		  $("#address").html(data['address']);
