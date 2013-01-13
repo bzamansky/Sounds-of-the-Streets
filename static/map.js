@@ -58,15 +58,21 @@ function removeMark(){
 
 
 function addressToLatLng(address){
+    var x = [];
     geocoder.geocode( {'address':address}, function(results, status){
 	if (status == google.maps.GeocoderStatus.OK){
 	    console.log(results[0].geometry.location);
-	    return results[0].geometry.location;
-	}
+	    x[0] = results[0].geometry.location.Ya;
+	    x[1] = results[0].geometry.location.Za;
+	    x[2] = results[0].geometry.location;
+ 	}
 	else{
 	    alert("Geocode was not successful for the following reason: " + status)
+	    x = undefined;
+
 	}
     });
+    return x;
 }
 
 function markerAtAddress(){
@@ -74,13 +80,13 @@ function markerAtAddress(){
     console.log(address);
     newAddress = addressToLatLng(address);
     console.log(newAddress);
-    var lat = newAddress["Ya"];
-    var lng = newAddress["Za"];
+    var lat = newAddress[0];
+    var lng = newAddress[1];
     var latlng = new google.maps.LatLng(lat, lng);
     removeMarkers();
     var marker = new google.maps.Marker({
-        position: newAddress
-        map: map
+        position: newAddress[2],
+        map: map,
 	center: latlng
     });  
 
