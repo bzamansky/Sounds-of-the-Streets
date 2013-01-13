@@ -1,6 +1,6 @@
 import json, urllib2
-import gdata.youtube
-import gdata.youtube.service
+#import gdata.youtube
+#import gdata.youtube.service
 
 key = "0946dbffa1b5b7ad9c4dc855be73398f"
 songDeets = ["url","title"]

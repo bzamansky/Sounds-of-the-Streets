@@ -31,7 +31,11 @@ def youtube_search(options):
   #print "####TITLE THEN VIDEOID####"
   #print results[0]['snippet']['title']
   #print results[0]['id']['videoId']
-  vidID = results[0]['id']['videoId']
+  try:
+    vidID = results[0]['id']['videoId']
+  except:
+    print "ERROR, VIDEO ID HAD AN ERROR SO WE'RE GIVING YOU THE LLAMA SONG"
+    vidID = "qybUFnY7Y8w"
   #print "####STUFF THAT GOES AFTER####"
   for search_result in search_response.get("items", []):
     #  print search_result['snippet']["title"]
