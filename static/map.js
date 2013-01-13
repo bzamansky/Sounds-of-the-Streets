@@ -61,10 +61,12 @@ function addressToLatLng(address){
     var x = [];
     geocoder.geocode( {'address':address}, function(results, status){
 	if (status == google.maps.GeocoderStatus.OK){
+	    console.log("this is results[0].geometry.location");
 	    console.log(results[0].geometry.location);
 	    x[0] = results[0].geometry.location.Ya;
 	    x[1] = results[0].geometry.location.Za;
 	    x[2] = results[0].geometry.location;
+	    placeMarker(x[2]);
  	}
 	else{
 	    alert("Geocode was not successful for the following reason: " + status)
@@ -79,23 +81,12 @@ function markerAtAddress(){
     address = $("#textbox").attr("value");
     console.log(address);
     newAddress = addressToLatLng(address);
-    console.log(newAddress);
-    var lat = newAddress[0];
-    var lng = newAddress[1];
-    var latlng = new google.maps.LatLng(lat, lng);
-    removeMarkers();
-    var marker = new google.maps.Marker({
-        position: newAddress[2],
-        map: map,
-	center: latlng
-    });  
+    console.log(address);
+    console.log("this is newAddress");
+    console.log(newAddress[2]);
+    
 
-    google.maps.event.addListener(marker, 'click', function(){
-	selected = marker;
-	console.log(marker);
-	infowindow.open(map,marker);
-	codeLatLng(marker);
-    });
+
     $.getJSON("/update", {address:address},function(data){
 	$("#address").html(data['address']);
 	$("#url").empty();
