@@ -26,16 +26,18 @@ def youtube_search(options):
 
 #[u'thumbnails', u'channelId', u'description', u'publishedAt', u'title']
 
-
   results = search_response.get("items",[])
   #print "####TITLE THEN VIDEOID####"
   #print results[0]['snippet']['title']
-  #print results[0]['id']['videoId']
-  try:
-    vidID = results[0]['id']['videoId']
-  except:
-    print "ERROR, VIDEO ID HAD AN ERROR SO WE'RE GIVING YOU THE LLAMA SONG"
-    vidID = "KMYN4djSq7o"
+  #print results
+  for item in results:
+    #print item
+    try:
+      vidID = item['id']['videoId']
+      break
+    except:
+      print "ERROR, VIDEO ID HAD AN ERROR SO WE'RE GIVING YOU THE LLAMA SONG"
+      vidID = "KMYN4djSq7o"
   #print "####STUFF THAT GOES AFTER####"
   for search_result in search_response.get("items", []):
     #  print search_result['snippet']["title"]
@@ -64,8 +66,9 @@ def makeParse(name):
     help="Max results", default=25)
   (options, args) = parser.parse_args()
   options.q = name
-  #print options.q
+  print "THIS IS THE TITLE I WANT TO GO IN"
+  print options.q
   return youtube_search(options)
 
 
-#print makeParse("tonight")
+print makeParse("Joss Stone Music (live, Bowery Ballroom, New York, NY, USA)")
