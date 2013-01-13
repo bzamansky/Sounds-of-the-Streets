@@ -25,19 +25,19 @@ def home():
 @app.route("/update", methods = ["GET","POST"])
 def update():
     address = request.args.get('address', "line goes here")
-    print(address)
+    #print(address)
     listOfAddresses = []
     listOfAddresses = address.split(";")
 
-    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    #print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     for place in listOfAddresses:
         print(place)
-    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    #print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     song = utils.getSong2(Last_key,listOfAddresses)
     url = song[0]
     artist = song[1]
     vidId = youtube.makeParse(artist)
-    print vidId
+    #print vidId
     r = {'address':listOfAddresses, 'url':url, 'artist':artist, 'vidId':vidId }
     return json.dumps(r)
 
