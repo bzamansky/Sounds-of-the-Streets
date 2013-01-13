@@ -20,16 +20,25 @@ def home():
         address = "default"
         return render_template("map.html", address=address, s=s)
 
+
+
 @app.route("/update", methods = ["GET","POST"])
 def update():
-    address = request.args.get('address',"line goes here")
-    names = address.split('#')
-    song = utils.getSong2(Last_key,names)
+    address = request.args.get('address', "line goes here")
+    print(address)
+    listOfAddresses = []
+    listOfAddresses = address.split(";")
+
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    for place in listOfAddresses:
+        print(place)
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    song = utils.getSong2(Last_key,listOfAddresses)
     url = song[0]
     artist = song[1]
-    vidIds = youtube.makeParse(artist)
-    print vidIds
-    r = {'address':names[0], 'url':url, 'artist':artist, 'vidId':vidIds }
+    vidId = youtube.makeParse(artist)
+    print vidId
+    r = {'address':listOfAddresses, 'url':url, 'artist':artist, 'vidId':vidId }
     return json.dumps(r)
 
 @app.route("/search", methods = ["GET","POST"])

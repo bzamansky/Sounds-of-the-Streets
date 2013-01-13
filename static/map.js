@@ -119,15 +119,20 @@ function codeLatLng(marker) {
               //infowindow.open(map, marker);
 	      //address = results[0].formatted_address;
 
-	      hi = [];
-	      for (var i = 0; i < results.length; i++){
-		  hi[i] = results[i].formatted_address;
-		  address = address + results[i].formatted_address + '#';
-		  console.log(hi[i]);
+	      for(var j = 1; j < 6; j++){
+		  pickle = "";
+		  if( j == 5 )
+		      pickle = pickle + results[0].address_components[j].long_name;
+		  else
+		      pickle = pickle + results[0].address_components[j].long_name + ";";
+		  console.log(pickle);
+		  address = address + pickle;
 	      }
-	      //address = hi;
-	      
-	      $.getJSON("/update", {address:address},function(data){
+	      console.log(address);
+	  }
+	  //address = hi;
+	  
+	  $.getJSON("/update", {address:address},function(data){
 		  $("#address").html(data['address']);
 		  $("#url").empty();
 		  var ref = $("<a></a>");
@@ -141,14 +146,14 @@ function codeLatLng(marker) {
 		  addVidList(data['vidId']);
 		  addVideo(data['vidId'][0]);
 	      });  
-          }
+	
 	}
-       else {
-          alert("Geocoder failed due to: " + status);
-      }
-    });
+	else {
+	    alert("Geocoder failed due to: " + status);
+	}
+	});
     
-    return undefined;
+    return 0;
 }
 
 
