@@ -28,11 +28,11 @@ def youtube_search(options):
 
 
   results = search_response.get("items",[])
-  print "####TITLE THEN VIDEOID####"
-  print results[0]['snippet']['title']
-  print results[0]['id']['videoId']
+  #print "####TITLE THEN VIDEOID####"
+  #print results[0]['snippet']['title']
+  #print results[0]['id']['videoId']
   vidID = results[0]['id']['videoId']
-  print "####STUFF THAT GOES AFTER####"
+  #print "####STUFF THAT GOES AFTER####"
   for search_result in search_response.get("items", []):
     #  print search_result['snippet']["title"]
     #  print search_result['snippet']['thumbnails']['default']['url']
@@ -46,9 +46,10 @@ def youtube_search(options):
           playlists.append("%s (%s)" % (search_result["snippet"]["title"],
                                         search_result["id"]["playlistId"]))
 
-  print "Videos:\n", "\n".join(videos), "\n"
-  print "Channels:\n", "\n".join(channels), "\n"
-  print "Playlists:\n", "\n".join(playlists), "\n"
+ # print "Videos:\n", "\n".join(videos), "\n"
+ # print "Channels:\n", "\n".join(channels), "\n"
+ # print "Playlists:\n", "\n".join(playlists), "\n"
+  print vidID
   return vidID
 
 def makeParse(name):
@@ -59,7 +60,7 @@ def makeParse(name):
     help="Max results", default=25)
   (options, args) = parser.parse_args()
   options.q = name
-  print options.q
+  #print options.q
   return youtube_search(options)
 
 
