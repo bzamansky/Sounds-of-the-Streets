@@ -83,6 +83,11 @@ function codeLatLng(marker) {
 		  ref.attr('href',data['url']);
 		  ref.text(data['url']);
 		  $("#url").append(ref);
+		  $("#AT").empty();
+		  $("#AT").append(data['artist']);
+		  $("#vidId").empty();
+		  $("#vidId").append(data['vidId']);
+		  addVideo(data['vidId']);
 	      });  
           }
 	}
