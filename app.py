@@ -1,5 +1,6 @@
 import utils
 import map_utils
+import youtube
 import json, urllib2
 from flask import Flask, render_template, request
 
@@ -19,9 +20,15 @@ def home():
 def update():
     address = request.args.get('address',"line goes here")
     names = address.split('#')
-    url = utils.getSong2(Last_key, names)
-    r = {'address':names[0], 'url':url}
+    song = utils.getSong2(Last_key,names)
+    url = song[0]
+    artist = song[1]
+    vidId = youtube.makeParse(artist)
+    print vidId
+    r = {'address':names[0], 'url':url, 'artist':artist, 'vidId':vidId }
     return json.dumps(r)
     
 if __name__ == '__main__':
     app.run(debug = True, port = 5000)
+
+
