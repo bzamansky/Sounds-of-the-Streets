@@ -70,10 +70,14 @@ function codeLatLng(marker) {
 
 	      for(var j = 1; j < 6; j++){
 		  pickle = "";
-		  pickle = pickle + results[0].address_components[j].long_name + ";";
+		  if( j == 5 )
+		      pickle = pickle + results[0].address_components[j].long_name;
+		  else
+		      pickle = pickle + results[0].address_components[j].long_name + ";";
 		  console.log(pickle);
+		  address = address + pickle;
 	      }
-	      address = address + pickle + "#";
+	      console.log(address);
 	  }
 	  //address = hi;
 	  
