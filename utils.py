@@ -58,28 +58,6 @@ def getSong2(k,names):
 #Youtube Stuff#
 ###############
 
-def initialize():
-
-    yt_service = gdata.youtube.service.YouTubeService()
-
-    # Turn on HTTPS/SSL access.
-    # Note: SSL is not available at this time for uploads.
-    yt_service.ssl = True
-
-    yt_service.developer_key = "AI39si5ftQAadvFWghwUFyQgZVRXIj_E-J8bmlv1PeQCZ5dQQneayRz1XV822s8phGDKpqknrl7n0HoiSLwaxfd5HlbU4s2iMg"
-    yt_service.client_id = key
-
-def getTopVideo( searchTerm):
-    yt_service = gdata.youtube.service.YouTubeService()
-    query = gdata.youtube.service.YouTubeVideoQuery()
-    query.vq = searchTerm
-    query.orderby = 'relevance'
-    query.racy = 'include'
-    feed = yt_service.YouTubeQuery(query)
-    return feed.entry[0]
-
-initialize()
-print getTopVideo("tonight")
 
 """
 def getVideo(k,name):
@@ -93,7 +71,8 @@ def getVideo(k,name):
     request = urllib2.urlopen(url)
     result = json.loads(request.read())
     print result
+
+getVideo(key, "believe")
+
+
 """
-#getVideo(key, "believe")
-
-
