@@ -39,24 +39,24 @@ def youtube_search(options):
       print "ERROR, VIDEO ID HAD AN ERROR SO WE'RE GIVING YOU A COMPLIMENTARY VIDEO"
       vidID = "UJKythlXAIY"
   #print "####STUFF THAT GOES AFTER####"
-  for search_result in search_response.get("items", []):
+  #for search_result in search_response.get("items", []):
     #  print search_result['snippet']["title"]
     #  print search_result['snippet']['thumbnails']['default']['url']
-      if search_result["id"]["kind"] == "youtube#video":
-          videos.append("%s (%s)" % (search_result["snippet"]["title"],
-                                     search_result["id"]["videoId"]))
-      elif search_result["id"]["kind"] == "youtube#channel":
-          channels.append("%s (%s)" % (search_result["snippet"]["title"],
-                                       search_result["id"]["channelId"]))
-      elif search_result["id"]["kind"] == "youtube#playlist":
-          playlists.append("%s (%s)" % (search_result["snippet"]["title"],
-                                        search_result["id"]["playlistId"]))
+   #   if search_result["id"]["kind"] == "youtube#video":
+    #      videos.append("%s (%s)" % (search_result["snippet"]["title"],
+     #                                search_result["id"]["videoId"]))
+    #  elif search_result["id"]["kind"] == "youtube#channel":
+    #      channels.append("%s (%s)" % (search_result["snippet"]["title"],
+    #                                   search_result["id"]["channelId"]))
+    #  elif search_result["id"]["kind"] == "youtube#playlist":
+    #      playlists.append("%s (%s)" % (search_result["snippet"]["title"],
+    #                                    search_result["id"]["playlistId"]))
 
  # print "Videos:\n", "\n".join(videos), "\n"
  # print "Channels:\n", "\n".join(channels), "\n"
  # print "Playlists:\n", "\n".join(playlists), "\n"
-  print vidID
-  return vidID
+  print videos
+  return videos
 
 def makeParse(name):
   parser = OptionParser()
@@ -71,4 +71,4 @@ def makeParse(name):
   return youtube_search(options)
 
 
-#print makeParse("Joss Stone Music (live, Bowery Ballroom, New York, NY, USA)")
+print makeParse("New York, New York")

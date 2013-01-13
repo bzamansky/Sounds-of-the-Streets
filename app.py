@@ -23,9 +23,9 @@ def update():
     song = utils.getSong2(Last_key,names)
     url = song[0]
     artist = song[1]
-    vidId = youtube.makeParse(artist)
-    print vidId
-    r = {'address':names[0], 'url':url, 'artist':artist, 'vidId':vidId }
+    vidIds = youtube.makeParse(artist)
+    print vidIds
+    r = {'address':names[0], 'url':url, 'artist':artist, 'vidId':vidIds }
     return json.dumps(r)
     
 if __name__ == '__main__':
