@@ -36,8 +36,8 @@ def youtube_search(options):
       vidID = item['id']['videoId']
       break
     except:
-      print "ERROR, VIDEO ID HAD AN ERROR SO WE'RE GIVING YOU THE LLAMA SONG"
-      vidID = "KMYN4djSq7o"
+      print "ERROR, VIDEO ID HAD AN ERROR SO WE'RE GIVING YOU A COMPLIMENTARY VIDEO"
+      vidID = "UJKythlXAIY"
   #print "####STUFF THAT GOES AFTER####"
   for search_result in search_response.get("items", []):
     #  print search_result['snippet']["title"]
