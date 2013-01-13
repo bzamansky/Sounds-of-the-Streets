@@ -60,7 +60,7 @@ def makeParse(name):
   (options, args) = parser.parse_args()
   options.q = name
   print options.q
-  youtube_search(options)
+  return youtube_search(options)
 
 
-makeParse("tonight")
+print makeParse("tonight")
