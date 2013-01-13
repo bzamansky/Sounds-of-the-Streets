@@ -20,6 +20,15 @@ def home():
 def update():
     address = request.args.get('address',"line goes here")
     names = address.split('#')
+    listOfAddresses
+    index = 0
+    for place in names:
+        listOfAddresses[index] = place.split(";")
+        index = index + 1;
+        
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    print(listOfAddresses)
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     song = utils.getSong2(Last_key,names)
     url = song[0]
     artist = song[1]
