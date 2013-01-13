@@ -3,6 +3,7 @@ import gdata.youtube
 import gdata.youtube.service
 
 key = "0946dbffa1b5b7ad9c4dc855be73398f"
+songDeets = ["url","title"]
 
 def getSong(k,name):
     #Gets the URL of a song
@@ -47,12 +48,13 @@ def getSong2(k,names):
         request = urllib2.urlopen(url)
         result = json.loads(request.read())
         try:
-            x = result["results"]["trackmatches"]["track"][0]["url"]
-            getArtistTitle( result["results"]["trackmatches"]["track"][0])
+            songDeets[0] = result["results"]["trackmatches"]["track"][0]["url"]
+            songDeets[1] = getArtistTitle( result["results"]["trackmatches"]["track"][0])
             break
         except:
-            x = "http://www.last.fm/music/Rick+Astley/_/Never+Gonna+Give+You+Up?ac=never+gonna+give+you+"
-    return x
+            songDeets[0] = "http://www.last.fm/music/Rick+Astley/_/Never+Gonna+Give+You+Up?ac=never+gonna+give+you+"
+            songDeets[1] = "Rick Astley Never Gonna Give You Up"
+    return songDeets
 
 def getArtistTitle(result):
     artistTitle = result['artist'] + " " + result['name']
@@ -60,7 +62,7 @@ def getArtistTitle(result):
     return artistTitle
 
 
-print getSong2(key, "tonight")
+#print getSong2(key, "tonight")
 
 ###############
 #Youtube Stuff#
