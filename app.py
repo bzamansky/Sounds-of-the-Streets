@@ -20,11 +20,10 @@ def home():
 def update():
     address = request.args.get('address',"line goes here")
     names = address.split('#')
-    listOfAddresses
+    listOfAddresses = []
     index = 0
     for place in names:
-        listOfAddresses[index] = place.split(";")
-        index = index + 1;
+        listOfAddresses.append(place.split(";"))
         
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     print(listOfAddresses)
