@@ -21,9 +21,25 @@ function addVidList(vidId){
 }
 
 function nextVid(){
-    $("#nextVideo").click(function(){console.log(i);console.log("pressed"); $("#player").attr("src","http://www.youtube.com/embed/" + listOfVids[i] + "?enablejsapi=1&origin=http://example.com"); i = i+1;});
+    i = i + 1;
+    if (i >= listOfVids.length){
+	i = listOfVids.length;
+    }
+    $("#nextVideo").click(function(){console.log(i);console.log("pressed"); $("#player").attr("src","http://www.youtube.com/embed/" + listOfVids[i] + "?enablejsapi=1&origin=http://example.com");});
+}
+
+function prevVid(){
+    i = i-1
+    if (i <= 0){
+	i = 0;
+    }
+    $("#prevVideo").click(function(){
+	console.log(i);console.log("pressed");
+	$("#player").attr("src","http://www.youtube.com/embed/" + listOfVids[i] + "?enablejsapi=1&origin=http://example.com"); });
+				
 }
 
 $(document).ready(function(){
     $("#nextVideo").click(nextVid);
+    $("#prevVideo").click(prevVid);
 });
