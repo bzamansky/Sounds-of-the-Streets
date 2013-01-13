@@ -24,19 +24,21 @@ function initialize() {
 
 function placeMarker(location) {
 //This allows you to print a marker.
-
+    removeMarkers();
     var marker = new google.maps.Marker({
         position: location,
         map: map
     });
     selected = marker;
     markersArray.push(marker);
+    codeLatLng(marker);
     infowindow = new google.maps.InfoWindow(
 	{ content: "" +marker.position,
           size: new google.maps.Size(50,50)
 	});
     google.maps.event.addListener(marker, 'click', function(){
 	selected = marker;
+	console.log(marker);
 	infowindow.open(map,marker);
 	codeLatLng(marker);
     });
@@ -65,7 +67,7 @@ function codeLatLng(marker) {
 	if (status == google.maps.GeocoderStatus.OK) {
           if (results[0]) {
               infowindow.setContent(results[0].formatted_address);
-              infowindow.open(map, marker);
+              //infowindow.open(map, marker);
 	      //address = results[0].formatted_address;
 
 	      hi = [];
