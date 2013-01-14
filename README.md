@@ -16,3 +16,8 @@ BZ-SD
 * Howard's voice
 * Donut Budget
 * Cool icon
+
+
+**Things that need to be installed**
+* pip install --upgrade google-api-python-client
+* googlemaps
