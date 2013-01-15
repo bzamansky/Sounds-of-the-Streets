@@ -24,6 +24,7 @@ function initialize() {
 function placeMarker(location) {
 //This allows you to print a marker.
     removeMarkers();
+    map.setCenter(location);
     var marker = new google.maps.Marker({
         position: location,
         map: map
@@ -41,7 +42,6 @@ function placeMarker(location) {
 	infowindow.open(map,marker);
 	codeLatLng(marker);
     });
-    
 }
 
 function removeMarkers(){
