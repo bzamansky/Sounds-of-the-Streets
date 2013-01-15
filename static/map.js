@@ -124,7 +124,7 @@ function codeLatLng(marker) {
 		  if( j == 5 )
 		      pickle = pickle + results[0].address_components[j].long_name;
 		  else
-		      pickle = pickle + results[0].address_components[j].long_name + ";";
+		      pickle = pickle + results[0].address_components[j].long_name + " ;";
 		  console.log(pickle);
 		  address = address + pickle;
 	      }
