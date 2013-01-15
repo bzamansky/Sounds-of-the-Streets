@@ -21,8 +21,8 @@ def youtube_search(options):
   ).execute()
   
   videos = []
-  channels = []
-  playlists = []
+#  channels = []
+#  playlists = []
 
 #[u'thumbnails', u'channelId', u'description', u'publishedAt', u'title']
 
@@ -34,29 +34,29 @@ def youtube_search(options):
     #print item
     try:
       vidID = item['id']['videoId']
-      break
+      videos.append(vidID)
     except:
-      print "ERROR, VIDEO ID HAD AN ERROR SO WE'RE GIVING YOU A COMPLIMENTARY VIDEO"
+      #print "ERROR, VIDEO ID HAD AN ERROR SO WE'RE GIVING YOU A COMPLIMENTARY VIDEO"
       vidID = "UJKythlXAIY"
   #print "####STUFF THAT GOES AFTER####"
-  for search_result in search_response.get("items", []):
+  #for search_result in search_response.get("items", []):
     #  print search_result['snippet']["title"]
     #  print search_result['snippet']['thumbnails']['default']['url']
-      if search_result["id"]["kind"] == "youtube#video":
-          videos.append("%s (%s)" % (search_result["snippet"]["title"],
-                                     search_result["id"]["videoId"]))
-      elif search_result["id"]["kind"] == "youtube#channel":
-          channels.append("%s (%s)" % (search_result["snippet"]["title"],
-                                       search_result["id"]["channelId"]))
-      elif search_result["id"]["kind"] == "youtube#playlist":
-          playlists.append("%s (%s)" % (search_result["snippet"]["title"],
-                                        search_result["id"]["playlistId"]))
+   #   if search_result["id"]["kind"] == "youtube#video":
+    #      videos.append("%s (%s)" % (search_result["snippet"]["title"],
+     #                                search_result["id"]["videoId"]))
+    #  elif search_result["id"]["kind"] == "youtube#channel":
+    #      channels.append("%s (%s)" % (search_result["snippet"]["title"],
+    #                                   search_result["id"]["channelId"]))
+    #  elif search_result["id"]["kind"] == "youtube#playlist":
+    #      playlists.append("%s (%s)" % (search_result["snippet"]["title"],
+    #                                    search_result["id"]["playlistId"]))
 
  # print "Videos:\n", "\n".join(videos), "\n"
  # print "Channels:\n", "\n".join(channels), "\n"
  # print "Playlists:\n", "\n".join(playlists), "\n"
-  print vidID
-  return vidID
+  #print videos
+  return videos
 
 def makeParse(name):
   parser = OptionParser()
@@ -66,9 +66,9 @@ def makeParse(name):
     help="Max results", default=25)
   (options, args) = parser.parse_args()
   options.q = name
-  print "THIS IS THE TITLE I WANT TO GO IN"
-  print options.q
+  #print "THIS IS THE TITLE I WANT TO GO IN"
+  #print options.q
   return youtube_search(options)
 
 
-#print makeParse("Joss Stone Music (live, Bowery Ballroom, New York, NY, USA)")
+#print makeParse("New York, New York")
