@@ -3,6 +3,7 @@ var geocoder;
 var infowindow;
 var markersArray = [];
 var selected;
+var service;
 
 
 function initialize() {
@@ -19,6 +20,7 @@ function initialize() {
     google.maps.event.addListener(map, 'click', function(event) {
         placeMarker(event.latLng);
     });
+    service = new google.maps.places.PlacesService(map);
 }
 
 function placeMarker(location) {
@@ -40,8 +42,23 @@ function placeMarker(location) {
 	selected = marker;
 	console.log(marker);
 	infowindow.open(map,marker);
+	console.log(infowindow['content']);
 	codeLatLng(marker);
     });
+
+
+    var request = {
+	location: marker.position,
+	radius: '500'
+    };
+    service.nearbySearch(request, callback);
+}
+
+function callback(results,status){
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+	for (var i = 0; i < results.length; i++){
+	    var place = results[i];
+	    
 }
 
 function removeMarkers(){
