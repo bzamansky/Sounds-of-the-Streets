@@ -4,6 +4,7 @@ var infowindow;
 var markersArray = [];
 var selected;
 var service;
+var usePlaces;
 
 
 function initialize() {
@@ -21,6 +22,7 @@ function initialize() {
         placeMarker(event.latLng);
     });
     service = new google.maps.places.PlacesService(map);
+    usePlaces = false;
 }
 
 function placeMarker(location) {
@@ -33,34 +35,54 @@ function placeMarker(location) {
     });
     selected = marker;
     markersArray.push(marker);
-    codeLatLng(marker);
+    if (usePlaces){
+	var request = {
+	    location: marker.position,
+	    radius: '50'
+	};
+	service.nearbySearch(request, callback);
+    }
+    else{
+	codeLatLng(marker);
+    }
+    //codeLatLng(marker);
     infowindow = new google.maps.InfoWindow(
 	{ content: "" +marker.position,
           size: new google.maps.Size(50,50)
 	});
+    
     google.maps.event.addListener(marker, 'click', function(){
 	selected = marker;
-	console.log(marker);
+	//console.log(marker);
 	infowindow.open(map,marker);
-	console.log(infowindow['content']);
+	//console.log(infowindow['content']);
 	codeLatLng(marker);
     });
 
 
-    var request = {
-	location: marker.position,
-	radius: '500'
-    };
-    service.nearbySearch(request, callback);
 }
 
 function callback(results,status){
+    var address;				  
     if (status == google.maps.places.PlacesServiceStatus.OK) {
-	for (var i = 0; i < results.length; i++){
-	    var place = results[i];
-	    console.log(place);
-	}
+	address = results[0]['name'];
     }
+    console.log("place");
+    console.log(address);
+    $.getJSON("/update", {address:address},function(data){
+	$("#address").html(data['address']);
+	$("#url").empty();
+	var ref = $("<a></a>");
+	ref.attr('href',data['url']);
+	ref.text(data['url']);
+	$("#url").append(ref);
+	$("#AT").empty();
+	$("#AT").append(data['artist']);
+	$("#vidId").empty();
+	$("#vidId").append(data['vidId']);
+	addVidList(data['vidId']);
+	addVideo(data['vidId'][0]);
+    });  
 }
 
 function removeMarkers(){
@@ -144,10 +166,10 @@ function codeLatLng(marker) {
 		      pickle = pickle + results[0].address_components[j].long_name;
 		  else
 		      pickle = pickle + results[0].address_components[j].long_name + ";";
-		  console.log(pickle);
+		  //console.log(pickle);
 		  address = address + pickle;
 	      }
-	      console.log(address);
+	      //console.log(address);
 	  }
 	  //address = hi;
 	  
@@ -182,4 +204,6 @@ $(document).ready(function(){
     $("#clear").click(removeMarkers);
     $("#remove").click(removeMark);
     $("#submit").click(markerAtAddress);
+    $("#usePlaces").click(function() {usePlaces = true; console.log("places=true");});
+    $("#useAddress").click(function() {usePlaces = false; console.log("places = false");});
 });
