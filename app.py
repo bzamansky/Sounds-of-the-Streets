@@ -26,6 +26,7 @@ def home():
 def update():
     address = request.args.get('address', "line goes here")
     useplace = request.args.get('useplace', False)
+    default = ""
     #print(address)
     
     listOfAddresses = []
@@ -40,10 +41,14 @@ def update():
     else:
         song = utils.getSong2(Last_key,listOfAddresses)
     url = song[0]
+    if song[1] == "Rick Astley Never Gonna Give You Up":
+        default = "We couldn't find a song for this location, so have this complementary song instead."
+    else:
+        default = ""
     artist = song[1]
     vidId = youtube.makeParse(artist)
     #print vidId
-    r = {'address':listOfAddresses, 'url':url, 'artist':artist, 'vidId':vidId }
+    r = {'address':listOfAddresses, 'url':url, 'artist':artist, 'vidId':vidId, 'default':default }
     return json.dumps(r)
 
 @app.route("/search", methods = ["GET","POST"])
