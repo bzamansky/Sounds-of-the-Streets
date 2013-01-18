@@ -38,7 +38,7 @@ function placeMarker(location) {
     if (usePlaces){
 	var request = {
 	    location: marker.position,
-	    radius: '50'
+	    radius: '100'
 	};
 	service.nearbySearch(request, callback);
     }
@@ -69,7 +69,8 @@ function callback(results,status){
     }
     console.log("place");
     console.log(address);
-    $.getJSON("/update", {address:address},function(data){
+    useplace = usePlaces;
+    $.getJSON("/update", {address:address, useplace:useplace},function(data){
 	$("#address").html(data['address']);
 	$("#url").empty();
 	var ref = $("<a></a>");

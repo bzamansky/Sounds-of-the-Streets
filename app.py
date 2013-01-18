@@ -25,7 +25,10 @@ def home():
 @app.route("/update", methods = ["GET","POST"])
 def update():
     address = request.args.get('address', "line goes here")
+    useplace = request.args.get('useplace', False)
+    print "useplace" + useplace
     #print(address)
+    
     listOfAddresses = []
     listOfAddresses = address.split(";")
 
@@ -33,7 +36,10 @@ def update():
     for place in listOfAddresses:
         print(place)
     #print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-    song = utils.getSong2(Last_key,listOfAddresses)
+    if useplace:
+        song = utils.getSong2(Last_key,address)
+    else:
+        song = utils.getSong2(Last_key,listOfAddresses)
     url = song[0]
     artist = song[1]
     vidId = youtube.makeParse(artist)
