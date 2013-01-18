@@ -26,7 +26,6 @@ def home():
 def update():
     address = request.args.get('address', "line goes here")
     useplace = request.args.get('useplace', False)
-    print "useplace" + useplace
     #print(address)
     
     listOfAddresses = []
