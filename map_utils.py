@@ -5,7 +5,7 @@ gmaps = GoogleMaps(key)
 
 
 def source():
-    return "https://maps.googleapis.com/maps/api/js?key=AIzaSyDm3LFbtgPrB8jtcruyGlf9ED-tidYvYrA&sensor=true"
+    return "https://maps.googleapis.com/maps/api/js?key=AIzaSyDm3LFbtgPrB8jtcruyGlf9ED-tidYvYrA&libraries=places&sensor=true"
 
 
 
