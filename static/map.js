@@ -215,7 +215,6 @@ function codeLatLng(marker) {
 		$("#title").append("Title: ");
 		$("#title").append(data['title']);
 	    }); 
-	    
 	}
 	else {
 	    alert("Geocoder failed due to: " + status);
