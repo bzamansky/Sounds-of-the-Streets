@@ -36,10 +36,7 @@ def update():
     for place in listOfAddresses:
         print(place)
     #print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-    if useplace:
-        song = utils.getSong2(Last_key,address)
-    else:
-        song = utils.getSong2(Last_key,listOfAddresses)
+    song = utils.getSong2(Last_key,listOfAddresses)
     url = song[0]
     if song[1] == "Rick Astley Never Gonna Give You Up":
         default = "We couldn't find a song for this location, so have this complementary song instead."
