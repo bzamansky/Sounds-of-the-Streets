@@ -27,6 +27,8 @@ def update():
     address = request.args.get('address', "line goes here")
     useplace = request.args.get('useplace', False)
     de = ""
+    writer = ""
+    title = ""
     #print(address)
     
     listOfAddresses = []
@@ -45,7 +47,9 @@ def update():
     artist = song[1]
     vidId = youtube.makeParse(artist)
     #print vidId
-    r = {'address':listOfAddresses, 'url':url, 'artist':artist, 'vidId':vidId, 'de':de }
+    writer = song[2]
+    title = song[3]
+    r = {'address':listOfAddresses, 'url':url, 'artist':artist, 'vidId':vidId, 'de':de, 'writer':writer, 'title':title }
     return json.dumps(r)
 
 @app.route("/search", methods = ["GET","POST"])

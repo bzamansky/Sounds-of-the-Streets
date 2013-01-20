@@ -86,6 +86,12 @@ function callback(results,status){
 	addVideo(data['vidId'][0]);
 	$("#de").empty();
 	$("#de").append(data['de']);
+	$("#writer").empty();
+	$("#writer").append("Artist: ");
+	$("#writer").append(data['writer']);
+	$("#title").empty();
+	$("#title").append("Title: ");
+	$("#title").append(data['title']);
     }); 
 
 }
@@ -146,6 +152,12 @@ function markerAtAddress(){
 	addVideo(data['vidId'][0]);
 	$("#de").empty();
 	$("#de").append(data['de']);
+	$("#writer").empty();
+	$("#writer").append("Artist: ");
+	$("#writer").append(data['writer']);
+	$("#title").empty();
+	$("#title").append("Title: ");
+	$("#title").append(data['title']);
     }); 
     
 }
@@ -196,6 +208,12 @@ function codeLatLng(marker) {
 		addVideo(data['vidId'][0]);
 		$("#de").empty();
 		$("#de").append(data['de']);
+		$("#writer").empty();
+		$("#writer").append("Artist: ");
+		$("#writer").append(data['writer']);
+		$("#title").empty();
+		$("#title").append("Title: ");
+		$("#title").append(data['title']);
 	    }); 
 	    
 	}

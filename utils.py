@@ -3,7 +3,7 @@ import json, urllib2
 #import gdata.youtube.service
 
 key = "0946dbffa1b5b7ad9c4dc855be73398f"
-songDeets = ["url","title"]
+songDeets = ["url","title","writer","track"]
 
 def getSong(k,name):
     #Gets the URL of a song
@@ -34,7 +34,6 @@ def getSong2(k,names):
     #Gets the URL of a song
     #If there is no song for the name sent in, it rickrolls you.
     for item in names:
-        
         title = item.split()
         track = ""
    #the next line cuts out the first 2 parts of the address so we can see this works when you click on 42nd street
@@ -50,10 +49,14 @@ def getSong2(k,names):
         try:
             songDeets[0] = result["results"]["trackmatches"]["track"][0]["url"]
             songDeets[1] = getArtistTitle( result["results"]["trackmatches"]["track"][0])
+            songDeets[2] = result["results"]["trackmatches"]["track"][0]['artist']
+            songDeets[3] = result["results"]["trackmatches"]["track"][0]['name']
             break
         except:
             songDeets[0] = "http://www.last.fm/music/Rick+Astley/_/Never+Gonna+Give+You+Up?ac=never+gonna+give+you+"
             songDeets[1] = "Rick Astley Never Gonna Give You Up"
+            songDeets[2] = "Rick Astley"
+            songDeets[3] = "Never Gonna Give You Up"
     return songDeets
 
 def getArtistTitle(result):
