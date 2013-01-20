@@ -17,7 +17,7 @@ def home():
         return search(address)
     else:
         s = map_utils.source()
-        address = "default"
+        address = ""
         return render_template("map.html", address=address, s=s)
 
 
@@ -26,7 +26,7 @@ def home():
 def update():
     address = request.args.get('address', "line goes here")
     useplace = request.args.get('useplace', False)
-    default = ""
+    de = ""
     #print(address)
     
     listOfAddresses = []
@@ -39,13 +39,13 @@ def update():
     song = utils.getSong2(Last_key,listOfAddresses)
     url = song[0]
     if song[1] == "Rick Astley Never Gonna Give You Up":
-        default = "We couldn't find a song for this location, so have this complementary song instead."
+        de = "We couldn't find a song for this location, so have this complementary song instead."
     else:
-        default = ""
+        de = ""
     artist = song[1]
     vidId = youtube.makeParse(artist)
     #print vidId
-    r = {'address':listOfAddresses, 'url':url, 'artist':artist, 'vidId':vidId, 'default':default }
+    r = {'address':listOfAddresses, 'url':url, 'artist':artist, 'vidId':vidId, 'de':de }
     return json.dumps(r)
 
 @app.route("/search", methods = ["GET","POST"])

@@ -70,7 +70,8 @@ function callback(results,status){
     console.log("place");
     console.log(address);
     useplace = usePlaces;
-    $.getJSON("/update", {address:address, useplace:useplace},function(data){
+
+    $.getJSON("/update", {address:address},function(data){
 	$("#address").html(data['address']);
 	$("#url").empty();
 	var ref = $("<a></a>");
@@ -83,7 +84,10 @@ function callback(results,status){
 	$("#vidId").append(data['vidId']);
 	addVidList(data['vidId']);
 	addVideo(data['vidId'][0]);
-    });  
+	$("#de").empty();
+	$("#de").append(data['de']);
+    }); 
+
 }
 
 function removeMarkers(){
@@ -127,8 +131,6 @@ function markerAtAddress(){
     console.log("this is newAddress");
     console.log(newAddress[2]);
     
-
-
     $.getJSON("/update", {address:address},function(data){
 	$("#address").html(data['address']);
 	$("#url").empty();
@@ -142,8 +144,10 @@ function markerAtAddress(){
 	$("#vidId").append(data['vidId']);
 	addVidList(data['vidId']);
 	addVideo(data['vidId'][0]);
-    });  
-
+	$("#de").empty();
+	$("#de").append(data['de']);
+    }); 
+    
 }
 
 
@@ -156,48 +160,52 @@ function codeLatLng(marker) {
     var latlng = new google.maps.LatLng(lat, lng);
     geocoder.geocode({'latLng': latlng}, function(results, status) {
 	if (status == google.maps.GeocoderStatus.OK) {
-          if (results[0]) {
-              infowindow.setContent(results[0].formatted_address);
-              //infowindow.open(map, marker);
-	      //address = results[0].formatted_address;
-
-	      for(var j = 1; j < 6; j++){
-		  pickle = "";
-		  if( j == 5 )
-		      pickle = pickle + results[0].address_components[j].long_name;
-		  else
-		      pickle = pickle + results[0].address_components[j].long_name + ";";
-		  //console.log(pickle);
-		  address = address + pickle;
-	      }
-	      //console.log(address);
-	  }
-	  //address = hi;
-	  
-	  $.getJSON("/update", {address:address},function(data){
-		  $("#address").html(data['address']);
-		  $("#url").empty();
-		  var ref = $("<a></a>");
-		  ref.attr('href',data['url']);
-		  ref.text(data['url']);
-		  $("#url").append(ref);
-		  $("#AT").empty();
-		  $("#AT").append(data['artist']);
-		  $("#vidId").empty();
-		  $("#vidId").append(data['vidId']);
-		  addVidList(data['vidId']);
-		  addVideo(data['vidId'][0]);
-	      });  
-	
+            if (results[0]) {
+		infowindow.setContent(results[0].formatted_address);
+		//infowindow.open(map, marker);
+		//address = results[0].formatted_address;
+		
+		for(var j = 1; j < 6; j++){
+		    pickle = "";
+		    if( j == 5 )
+			pickle = pickle + results[0].address_components[j].long_name;
+		    else
+			pickle = pickle + results[0].address_components[j].long_name + ";";
+		    //console.log(pickle);
+		    address = address + pickle;
+		}
+		//console.log(address);
+	    }
+	    //address = hi;
+	    
+	    $.getJSON("/update", {address:address},function(data){
+		$("#address").empty();
+		$("#address").append("Address or Place: ");
+		$("#address").append(data['address']);
+		$("#url").empty();
+		$("#url").append("Song URL: ");
+		var ref = $("<a></a>");
+		ref.attr('href',data['url']);
+		ref.text(data['url']);
+		$("#url").append(ref);
+		$("#AT").empty();
+		$("#AT").append(data['artist']);
+		$("#vidId").empty();
+		$("#vidId").append(data['vidId']);
+		addVidList(data['vidId']);
+		addVideo(data['vidId'][0]);
+		$("#de").empty();
+		$("#de").append(data['de']);
+	    }); 
+	    
 	}
 	else {
 	    alert("Geocoder failed due to: " + status);
 	}
-	});
+    });
     
     return 0;
 }
-
 
 
 
