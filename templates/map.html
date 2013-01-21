@@ -69,35 +69,35 @@
 			</div>
 		</div>
   	</header>
-    
+  	
     <div id="map_canvas"></div>
-
-    <div id="youtube">
-      <iframe id="player" type="text/html" width="100%" height="100%"
-	      src="http://www.youtube.com/embed/a8O3IkBgubc?&enablejsapi=1&origin=http://example.com"
-	      frameborder="0">
-      </iframe>
-    </div>
-
-    <div style="clear:both;"></div>
-
-    <div id="bottombar">
-      <div id="info">
-	
-	<div id="location">Address or Place: <span id="address"></span></div>
-	<div id="de">{{de}}</div>
-	<div id="songurl">Song URL: <span id="url"></span></div>
-	<div id="songinfo">"<span id="title"></span>" by <span id="writer"></span></div>
-      </div>
-      
-      <div id="controls">
-	<div id="buttons">
-	  <button id="prevVideo" type="button">Previous Video</button>
-	  <button id="nextVideo" type="button">Next Video</button>
+    
+	<div id="youtube">
+		<iframe id="player" type="text/html" width="100%" height="100%"
+		  src="http://www.youtube.com/embed/a8O3IkBgubc?&enablejsapi=1&origin=http://example.com"
+		  frameborder="0">
+		</iframe>
+		
+		<div id="info">
+			<div id="location">Address or Place: <span id="address"></span></div>
+			<div id="de"></div>
+			
+			<div id="songinfo">"<a id="title"></a>" by <span id="writer"></span></div>
+			
+			  
+			<div id="controls">
+				  <button id="prevVideo" type="button">Previous Video</button>
+				  <button id="nextVideo" type="button">Next Video</button>
+			</div>
+		</div>
 	</div>
-	 <div id="name"><h3>Unnamed Road</h3></div>
-      </div>
-    </div>
 
   </body>
+  
+  <!-- Youtube Aspect Ratio -->
+	<script language="javascript">
+		var hgt = $('#youtube').width() / 16 * 9;
+		$('iframe').attr('height',hgt+"px");
+	</script>
+	
 </html>

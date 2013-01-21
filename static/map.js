@@ -71,25 +71,13 @@ function callback(results,status){
     useplace = usePlaces;
 
     $.getJSON("/update", {address:address},function(data){
-	$("#address").html(data['address']);
-	$("#url").empty();
-	var ref = $("<a></a>");
-	ref.attr('href',data['url']);
-	ref.text(data['url']);
-	$("#url").append(ref);
-	$("#AT").empty();
-	$("#AT").append(data['artist']);
-	$("#vidId").empty();
-	$("#vidId").append(data['vidId']);
-	addVidList(data['vidId']);
-	addVideo(data['vidId'][0]);
-	$("#de").empty();
-	$("#de").append(data['de']);
-	$("#writer").empty();
-	$("#writer").append(data['writer']);
-	$("#title").empty();
-	$("#title").append(data['title']);
-	$("#songinfo").show();
+		$("#address").html(data['address']);
+		addVidList(data['vidId']);
+		addVideo(data['vidId'][0]);
+		$("#de").append(data['de']);
+		$("#writer").append(data['writer']);
+		$("#title").attr('href',data['url']).append(data['title']);
+		$("#songinfo").show();
     }); 
 
 }
@@ -137,27 +125,15 @@ function markerAtAddress(){
     console.log(newAddress[2]);
     
     $.getJSON("/update", {address:address},function(data){
-	$("#address").html(data['address']);
-	$("#url").empty();
-	var ref = $("<a></a>");
-	ref.attr('href',data['url']);
-	ref.text(data['url']);
-	$("#url").append(ref);
-	$("#AT").empty();
-	$("#AT").append(data['artist']);
-	$("#vidId").empty();
-	$("#vidId").append(data['vidId']);
-	addVidList(data['vidId']);
-	addVideo(data['vidId'][0]);
-	$("#de").empty();
-	$("#de").append(data['de']);
-	$("#writer").empty();
-	$("#writer").append(data['writer']);
-	$("#title").empty();
-	$("#title").append(data['title']);
-	$("#songinfo").show();
+		$("#address").html(data['address']);
+		addVidList(data['vidId']);
+		addVideo(data['vidId'][0]);
+		$("#de").append(data['de']);
+		$("#writer").append(data['writer']);
+		$("#title").attr('href',data['url']).append(data['title']);
+		$("#songinfo").show();
     }); 
-    
+
 }
 
 
@@ -189,27 +165,14 @@ function codeLatLng(marker) {
 	    //address = hi;
 	    
 	    $.getJSON("/update", {address:address},function(data){
-		$("#address").empty();
-		$("#address").append(data['address']);
-		$("#url").empty();
-		var ref = $("<a></a>");
-		ref.attr('href',data['url']);
-		ref.text(data['url']);
-		$("#url").append(ref);
-		$("#AT").empty();
-		$("#AT").append(data['artist']);
-		$("#vidId").empty();
-		$("#vidId").append(data['vidId']);
-		addVidList(data['vidId']);
-		addVideo(data['vidId'][0]);
-		$("#de").empty();
-		$("#de").append(data['de']);
-		$("#writer").empty();
-		$("#writer").append(data['writer']);
-		$("#title").empty();
-		$("#title").append(data['title']);
-		$("#songinfo").show();
-	    }); 
+			$("#address").html(data['address']);
+			addVidList(data['vidId']);
+			addVideo(data['vidId'][0]);
+			$("#de").append(data['de']);
+			$("#writer").append(data['writer']);
+			$("#title").attr('href',data['url']).append(data['title']);
+			$("#songinfo").show();
+    	}); 
 	}
 	else {
 	    alert("Geocoder failed due to: " + status);
