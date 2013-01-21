@@ -10,9 +10,21 @@ header { width: 100%; height: 70px; background: #81DAF5;
 		 		#logo h1 { font-size: 24px; margin: 0; }
 		 		#logo h2 { font-size: 14px; margin: 0; }
 		 		
-		 header #search { width: 400px; height: 28px; margin-left: 400px; margin-top: 20px; }
-		 		#search #textbox { width: 250px; height: 25px; }
-		 		#search #submit  { width: 70px;  height: 25px; }
+		 header #search { width: 340px; height: 30px; margin-left: 400px; margin-top: 20px; }
+		 		#search #textbox { width: 250px; height: 25px; border-radius: 5px; font-size: 18px; text-indent: 5px; }
+		 		#search #submit  { width: 70px;  height: 25px;
+		 						   font-weight: bold;
+		 						   border: 1px solid #333;
+								   background-color: rgb(56, 163, 212);
+								   background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
+								   background-image:    -moz-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
+								   background-image:     -ms-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
+								   background-image:      -o-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
+								   background-image:         linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
+								   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.45);
+								   border-radius: 3px; }
+								   
+    			#search .defaultTextActive { color: #a1a1a1; font-style: italic; }
 		 		
 		 header #settings { width: 440px; height: 70px; position: absolute; top: 0; right: 0; }
 		 		#settings h3 { display: inline; float: left; line-height: 70px; margin: 0; }

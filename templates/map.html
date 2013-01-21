@@ -17,6 +17,29 @@
 	<style type="text/css">
 		@import "{{ url_for('static', filename='toggle-switch.css') }}";
 	</style>
+	
+	<!-- Search bar default text -->
+	<script language="javascript">
+		$(document).ready(function() {
+    		$("#textbox").focus(function(srcc) {
+    	    	if ($(this).val() == $(this)[0].title)
+    	    	{
+    	        	$(this).removeClass("defaultTextActive");
+    	        	$(this).val("");
+    	    	}
+    		});
+    	
+    		$("#textbox").blur(function() {
+    	    	if ($(this).val() == "")
+    	    	{
+    	    	    $(this).addClass("defaultTextActive");
+    	        	$(this).val($(this)[0].title);
+    	    	}
+    		});
+    	
+    		$("#textbox").blur();        
+		});
+	</script>
 
   </head>
 
@@ -29,8 +52,8 @@
   		</div>
   		
   		<div id="search">
-  			<input type="text" id="textbox" />
-			<button id="submit" type="button">Search</button>
+  			<input type="text" id="textbox" title="enter an address or place" />
+			<button id="submit" type="button" >Search</button>
   		</div>
   		
   		<div id="settings">
