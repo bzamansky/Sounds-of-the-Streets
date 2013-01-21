@@ -122,9 +122,7 @@ function addressToLatLng(address){
 	    map.setCenter(x[2]);
  	}
 	else{
-	    alert("Geocode was not successful for the following reason: " + status)
 	    x = undefined;
-
 	}
     });
     return x;
@@ -166,7 +164,7 @@ function markerAtAddress(){
 
 
 function codeLatLng(marker) {
-//This allows you to click on a marker and return it's address.
+    //This allows you to click on a marker and return it's address.
     var address = "";
     var lat = marker.position["Ya"];
     var lng = marker.position["Za"];
@@ -190,36 +188,36 @@ function codeLatLng(marker) {
 		//console.log(address);
 	    }
 	    //address = hi;
-	    
-	    $.getJSON("/update", {address:address},function(data){
-		$("#address").empty();
-		$("#address").append("Address or Place: ");
-		$("#address").append(data['address']);
-		$("#url").empty();
-		$("#url").append("Song URL: ");
-		var ref = $("<a></a>");
-		ref.attr('href',data['url']);
-		ref.text(data['url']);
-		$("#url").append(ref);
-		$("#AT").empty();
-		$("#AT").append(data['artist']);
-		$("#vidId").empty();
-		$("#vidId").append(data['vidId']);
-		addVidList(data['vidId']);
-		addVideo(data['vidId'][0]);
-		$("#de").empty();
-		$("#de").append(data['de']);
-		$("#writer").empty();
-		$("#writer").append("Artist: ");
-		$("#writer").append(data['writer']);
-		$("#title").empty();
-		$("#title").append("Title: ");
-		$("#title").append(data['title']);
-	    }); 
 	}
-	else {
-	    alert("Geocoder failed due to: " + status);
-	}
+	
+    }); 
+    else {
+	address = undefined;
+    } 
+    $.getJSON("/update", {address:address},function(data){
+	$("#address").empty();
+	$("#address").append("Address or Place: ");
+	$("#address").append(data['address']);
+	$("#url").empty();
+	$("#url").append("Song URL: ");
+	var ref = $("<a></a>");
+	ref.attr('href',data['url']);
+	ref.text(data['url']);
+	$("#url").append(ref);
+	$("#AT").empty();
+	$("#AT").append(data['artist']);
+	$("#vidId").empty();
+	$("#vidId").append(data['vidId']);
+	addVidList(data['vidId']);
+	addVideo(data['vidId'][0]);
+	$("#de").empty();
+	$("#de").append(data['de']);
+	$("#writer").empty();
+	$("#writer").append("Artist: ");
+	$("#writer").append(data['writer']);
+	$("#title").empty();
+	$("#title").append("Title: ");
+	$("#title").append(data['title']);
     });
     
     return 0;
