@@ -12,47 +12,95 @@
     <script type="text/javascript" src="{{s}}"></script>
     <script src="static/map.js"></script>
     <script src="static/youtube.js"></script>
+    
+    <!-- Toggle Switch -->
+	<style type="text/css">
+		@import "{{ url_for('static', filename='toggle-switch.css') }}";
+	</style>
+	
+	<!-- Search bar default text -->
+	<script language="javascript">
+		$(document).ready(function() {
+    		$("#textbox").focus(function(srcc) {
+    	    	if ($(this).val() == $(this)[0].title)
+    	    	{
+    	        	$(this).removeClass("defaultTextActive");
+    	        	$(this).val("");
+    	    	}
+    		});
+    	
+    		$("#textbox").blur(function() {
+    	    	if ($(this).val() == "")
+    	    	{
+    	    	    $(this).addClass("defaultTextActive");
+    	        	$(this).val($(this)[0].title);
+    	    	}
+    		});
+    	
+    		$("#textbox").blur();        
+		});
+	</script>
 
   </head>
 
   <body onload="initialize()">
-    
+  
+  	<header>
+  		<div id="logo">
+  			<h1>Sounds of the Streets:</h1>
+  			<h2>explore the road less traveled</h2>
+  		</div>
+  		
+  		<div id="search">
+  			<input type="text" id="textbox" title="enter an address or place" />
+			<button id="submit" type="button" >Search</button>
+			<button id="getLoc" type="button">getLoc</button>
+  		</div>
+  		
+  		<div id="settings">
+  			<h3>Search By:</h3>
+  			<div id="toggle" class="switch candy blue">
+				<input id="address" name="view" type="radio" checked>
+				<label for="address" onclick="">Address</label>
+
+				<input id="place" name="view" type="radio">	
+				<label for="place" onclick="">Place</label>
+		
+				<span class="slide-button"></span>
+			</div>
+		</div>
+  	</header>
+  	
     <div id="map_canvas"></div>
-
-    <div id="youtube">
-      <iframe id="player" type="text/html" width="100%" height="100%"
-	      src="http://www.youtube.com/embed/a8O3IkBgubc?&enablejsapi=1&origin=http://example.com"
-	      frameborder="0">
-      </iframe>
-    </div>
-
-    <div style="clear:both;"></div>
-
-    <div id="bottombar">
-      <div id="info">
-	<input type="text" id="textbox" />
-	<button id="submit" type="button">Search Address</button>
-	<button id="useAddress" type="button">Use Address to Search</button>
-	<button id="usePlaces" type="button">Use Places nearby location to search</button>
-	<div id="address">Address or Place: {{address}}</div>
-	<div id="de">{{de}}</div>
-	<div id="url">Song URL: {{url}}</div>
-	<!--	<div id="AT">{{artist}}</div>   -->
-	<!--	<div id="vidId" style="visibility:hidden;" >{{vidId}}</div>  -->
-	<div id="writer">Artist: {{writer}}</div>
-	<div id="title">Title: {{title}}</div>
-	<button id="getLoc" type="button">getLoc</button>
-      </div>
-      
-      <div id="controls">
-	<div id="buttons">
-	  <button id="prevVideo" type="button">Previous Video</button>
-	  <button id="nextVideo" type="button">Next Video</button>
+    
+	<div id="youtube">
+		<iframe id="player" type="text/html" width="100%" height="100%"
+		  src="http://www.youtube.com/embed/a8O3IkBgubc?&enablejsapi=1&origin=http://example.com"
+		  frameborder="0">
+		</iframe>
+		
+		<div id="info">
+			<div id="location">Address or Place: <span id="address"></span></div>
+			<div id="de"></div>
+			
+			<div id="songinfo">"<a id="title"></a>" by <span id="writer"></span></div>
+			
+			  
+			<div id="controls">
+				  <button id="prevVideo" type="button">Previous Video</button>
+				  <button id="nextVideo" type="button">Next Video</button>
+			</div>
+		</div>
 	</div>
-	<div id="songNum">Number of songs in playlist: <span id="numSongs"><span></div>
-	 <div id="name"><h3>Unnamed Road</h3></div>
-      </div>
-    </div>
+
+	
 
   </body>
+  
+  <!-- Youtube Aspect Ratio -->
+	<script language="javascript">
+		var hgt = $('#youtube').width() / 16 * 9;
+		$('iframe').attr('height',hgt+"px");
+	</script>
+	
 </html>

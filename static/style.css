@@ -1,18 +1,37 @@
-html { height: 97%; }
+html { height: 100%; margin: 0; padding: 0; }
 
-body { height: 98%; margin: 0; padding: 1%; }
+body { height: 100%; margin: 0; }
 
-div#map_canvas { width: 50%; height: 75%; float: left; }
+header { width: 100%; height: 70px; background: #81DAF5;
+		 position: fixed; top: 0; z-index: 100; }
+		 
+		 header #logo { width: 300px; height: 50px; padding-top: 10px;
+		 				text-align: right; position: absolute; top: 0; left: 0; }
+		 		#logo h1 { font-size: 24px; margin: 0; }
+		 		#logo h2 { font-size: 14px; margin: 0; font-style: italic; }
+		 		
+		 header #search { width: 340px; height: 30px; margin-left: 400px; margin-top: 20px; }
+		 		#search #textbox { width: 250px; height: 25px; border-radius: 5px; font-size: 18px; text-indent: 5px; }
+		 		#search #submit  { width: 70px;  height: 25px;
+		 						   font-weight: bold;
+		 						   border: 1px solid #333;
+								   background-color: rgb(56, 163, 212);
+								   background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
+								   background-image:    -moz-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
+								   background-image:     -ms-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
+								   background-image:      -o-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
+								   background-image:         linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
+								   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.45);
+								   border-radius: 3px; }
+								   
+    			#search .defaultTextActive { color: #a1a1a1; font-style: italic; }
+		 		
+		 header #settings { width: 440px; height: 70px; position: absolute; top: 0; right: 0; }
+		 		#settings h3 { display: inline; float: left; line-height: 70px; margin: 0; }
+		 		#settings #toggle { width: 300px; height: 30px; margin: 20px; float: right; }
+		        
+#map_canvas { width: 45%; height: 100%; margin-top: 70px; float: left; }
 
-div#youtube    { width: 49%; height: 75%; float: right; }
+#youtube { width: 55%; height: 100%; margin-top: 70px; float: right; background: #81DAF5; }
 
-div#bottombar  { width: 100%; height: 23%; padding-top: 1%; }
-
-div#info       { width: 50%; height: 100%; float: left; background: #BBB;
-		 -webkit-box-sizing: border-box;
-		 -moz-box-sizing: border-box;
-		 box-sizing: border-box;
-		 padding: 1%; text-align: center;
-	       }
-
-div#controls   { width: 49%; height: 100%; float: right; background: #BBB; text-align: center; }
+#youtube #info { }

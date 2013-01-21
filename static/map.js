@@ -77,28 +77,13 @@ function callback(results,status){
     useplace = usePlaces;
 
     $.getJSON("/update", {address:address},function(data){
-	$("#address").html(data['address'].join(", "));
-	$("#url").empty();
-	var ref = $("<a></a>");
-	ref.attr('href',data['url']);
-	ref.text(data['url']);
-	$("#url").append(ref);
-	$("#AT").empty();
-	$("#AT").append(data['artist']);
-	$("#vidId").empty();
-	$("#vidId").append(data['vidId']);
+	$("#address").html(data['address']);
 	addVidList(data['vidId']);
 	addVideo(data['vidId'][0]);
-	$("#de").empty();
 	$("#de").append(data['de']);
-	$("#writer").empty();
-	$("#writer").append("Artist: ");
 	$("#writer").append(data['writer']);
-	$("#title").empty();
-	$("#title").append("Title: ");
-	$("#title").append(data['title']);
-	$("#numSongs").empty();
-	$("#numSongs").append(data['num']);
+	$("#title").attr('href',data['url']).append(data['title']);
+	$("#songinfo").show();
     }); 
 
 }
@@ -144,30 +129,15 @@ function markerAtAddress(){
     console.log(newAddress[2]);
     
     $.getJSON("/update", {address:address},function(data){
-	$("#address").html(data['address'].join(", "));
-	$("#url").empty();
-	var ref = $("<a></a>");
-	ref.attr('href',data['url']);
-	ref.text(data['url']);
-	$("#url").append(ref);
-	$("#AT").empty();
-	$("#AT").append(data['artist']);
-	$("#vidId").empty();
-	$("#vidId").append(data['vidId']);
+	$("#address").html(data['address']);
 	addVidList(data['vidId']);
 	addVideo(data['vidId'][0]);
-	$("#de").empty();
 	$("#de").append(data['de']);
-	$("#writer").empty();
-	$("#writer").append("Artist: ");
 	$("#writer").append(data['writer']);
-	$("#title").empty();
-	$("#title").append("Title: ");
-	$("#title").append(data['title']);
-	$("#numSongs").empty();
-	$("#numSongs").append(data['num']);
+	$("#title").attr('href',data['url']).append(data['title']);
+	$("#songinfo").show();
     }); 
-    
+
 }
 
 
@@ -198,30 +168,14 @@ function codeLatLng(marker) {
 	    }
 	    //address = hi;
 	    $.getJSON("/update", {address:address},function(data){
-		$("#address").empty();
-		$("#address").append("Address or Place: ");
-		$("#address").append(data['address'].join(", "));
-		$("#url").empty();
-		$("#url").append("Song URL: ");
-		var ref = $("<a></a>");
-		ref.attr('href',data['url']);
-		ref.text(data['url']);
-		$("#url").append(ref);
-		$("#AT").empty();
-		$("#AT").append(data['artist']);
-		$("#vidId").empty();
-		$("#vidId").append(data['vidId']);
+		$("#address").html(data['address']);
 		addVidList(data['vidId']);
 		addVideo(data['vidId'][0]);
-		$("#de").empty();
 		$("#de").append(data['de']);
-		$("#writer").empty();
 		$("#writer").append(data['writer']);
-		$("#title").empty();
-		$("#title").append(data['title']);
-		$("#numSongs").empty();
-		$("#numSongs").append(data['num']);
-	    }); 
+		$("#title").attr('href',data['url']).append(data['title']);
+		$("#songinfo").show();
+    	    }); 
 	}
 	
    
@@ -259,6 +213,9 @@ function getLocation(){
 
 
 $(document).ready(function(){
+	//hide the songinfo div since its empty
+	$("#songinfo").hide();
+	
     $("#clear").click(removeMarkers);
     $("#remove").click(removeMark);
     $("#submit").click(markerAtAddress);
@@ -266,7 +223,7 @@ $(document).ready(function(){
     //so you can press enter to search
     $("#textbox").keypress( function(e){ if (e['keyCode'] == 13){ markerAtAddress(); } });
     
-    $("#usePlaces").click(function() {usePlaces = true; console.log("places=true");});
-    $("#useAddress").click(function() {usePlaces = false; console.log("places = false");});
+    $("#place").click(function() {usePlaces = true; console.log("places=true");});
+    $("#address").click(function() {usePlaces = false; console.log("places = false");});
     $("#getLoc").click(getLocation);
 });
