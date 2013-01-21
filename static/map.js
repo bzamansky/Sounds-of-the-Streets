@@ -5,6 +5,7 @@ var markersArray = [];
 var selected;
 var service;
 var usePlaces;
+var initialLocation;
 
 
 function initialize() {
@@ -12,7 +13,7 @@ function initialize() {
 
     geocoder = new google.maps.Geocoder();
     var mapOptions = {
-        center: new google.maps.LatLng(40.713956,-74.377441),
+        center: new google.maps.LatLng(40.717704,-74.013897),
         zoom: 11,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -225,6 +226,28 @@ function codeLatLng(marker) {
 }
 
 
+function getLocation(){
+    if (navigator.geolocation){
+	navigator.geolocation.getCurrentPosition(
+	    function(position) {
+		initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+		console.log(initialLocation);
+		placeMarker(initialLocation);
+	    }, 
+	    function() { }
+	);
+    } 
+    else{
+	initialLocation = null;
+	console.log("could not find location");
+	return;
+    }
+   // placeMarker(initialLocation);
+}
+
+
+
+
 
 $(document).ready(function(){
     $("#clear").click(removeMarkers);
@@ -236,4 +259,5 @@ $(document).ready(function(){
     
     $("#usePlaces").click(function() {usePlaces = true; console.log("places=true");});
     $("#useAddress").click(function() {usePlaces = false; console.log("places = false");});
+    $("#getLoc").click(getLocation);
 });
