@@ -25,7 +25,9 @@ function nextVid(){
     if (i >= listOfVids.length){
 	i = listOfVids.length;
     }
-    $("#nextVideo").click(function(){console.log(i);console.log("pressed"); $("#player").attr("src","http://www.youtube.com/embed/" + listOfVids[i] + "?autoplay=1&enablejsapi=1&origin=http://example.com");});
+    console.log(i);
+    console.log("pressed"); 
+    $("#player").attr("src","http://www.youtube.com/embed/" + listOfVids[i] + "?autoplay=1&enablejsapi=1&origin=http://example.com");
 }
 
 function prevVid(){
@@ -33,9 +35,9 @@ function prevVid(){
     if (i <= 0){
 	i = 0;
     }
-    $("#prevVideo").click(function(){
-	console.log(i);console.log("pressed");
-	$("#player").attr("src","http://www.youtube.com/embed/" + listOfVids[i] + "?autoplay=1&enablejsapi=1&origin=http://example.com"); });
+    console.log(i);
+    console.log("pressed");
+    $("#player").attr("src","http://www.youtube.com/embed/" + listOfVids[i] + "?autoplay=1&enablejsapi=1&origin=http://example.com");
 				
 }
 
