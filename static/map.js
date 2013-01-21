@@ -190,10 +190,8 @@ function codeLatLng(marker) {
 	    
 	    $.getJSON("/update", {address:address},function(data){
 		$("#address").empty();
-		$("#address").append("Address or Place: ");
 		$("#address").append(data['address']);
 		$("#url").empty();
-		$("#url").append("Song URL: ");
 		var ref = $("<a></a>");
 		ref.attr('href',data['url']);
 		ref.text(data['url']);
@@ -234,6 +232,6 @@ $(document).ready(function(){
     //so you can press enter to search
     $("#textbox").keypress( function(e){ if (e['keyCode'] == 13){ markerAtAddress(); } });
     
-    $("#usePlaces").click(function() {usePlaces = true; console.log("places=true");});
-    $("#useAddress").click(function() {usePlaces = false; console.log("places = false");});
+    $("#place").click(function() {usePlaces = true; console.log("places=true");});
+    $("#address").click(function() {usePlaces = false; console.log("places = false");});
 });

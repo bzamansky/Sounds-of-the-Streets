@@ -12,10 +12,34 @@
     <script type="text/javascript" src="{{s}}"></script>
     <script src="static/map.js"></script>
     <script src="static/youtube.js"></script>
+    
+    <!-- Toggle Switch -->
+	<style type="text/css">
+		@import "{{ url_for('static', filename='toggle-switch.css') }}";
+	</style>
 
   </head>
 
   <body onload="initialize()">
+  
+  	<header>
+  		<div id="logo">
+  			<h1>Sounds of the Streets:</h1>
+  			<h2>explore the road less traveled</h2>
+  		</div>
+  		<div id="settings">
+  			<h3>Search By:</h3>
+  			<div id="toggle" class="switch candy blue">
+				<input id="address" name="view" type="radio" checked>
+				<label for="address" onclick="">Address</label>
+
+				<input id="place" name="view" type="radio">	
+				<label for="place" onclick="">Place</label>
+		
+				<span class="slide-button"></span>
+			</div>
+		</div>
+  	</header>
     
     <div id="map_canvas"></div>
 
@@ -31,12 +55,10 @@
     <div id="bottombar">
       <div id="info">
 	<input type="text" id="textbox" />
-	<button id="submit" type="button">Search Address</button>
-	<button id="useAddress" type="button">Use Address to Search</button>
-	<button id="usePlaces" type="button">Use Places nearby location to search</button>
-	<div id="address">Address or Place: {{address}}</div>
+	<button id="submit" type="button">Search</button>
+	<div id="location">Address or Place: <span id="address"></span></div>
 	<div id="de">{{de}}</div>
-	<div id="url">Song URL: {{url}}</div>
+	<div id="songurl">Song URL: <span id="url"></span></div>
 	<div id="songinfo">"<span id="title"></span>" by <span id="writer"></span></div>
       </div>
       
