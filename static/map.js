@@ -230,6 +230,10 @@ $(document).ready(function(){
     $("#clear").click(removeMarkers);
     $("#remove").click(removeMark);
     $("#submit").click(markerAtAddress);
+    
+    //so you can press enter to search
+    $("#textbox").keypress( function(e){ if (e['keyCode'] == 13){ markerAtAddress(); } });
+    
     $("#usePlaces").click(function() {usePlaces = true; console.log("places=true");});
     $("#useAddress").click(function() {usePlaces = false; console.log("places = false");});
 });
