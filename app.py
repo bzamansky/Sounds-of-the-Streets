@@ -40,16 +40,18 @@ def update():
     #print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     song = utils.getSong2(Last_key,listOfAddresses)
     url = song[0]
-    if song[1] == "Rick Astley Never Gonna Give You Up":
-        de = "We couldn't find a song for this location, so have this complementary song instead."
-    else:
-        de = ""
     artist = song[1]
     vidId = youtube.makeParse(artist)
+    num = len(vidId)
     #print vidId
     writer = song[2]
     title = song[3]
-    r = {'address':listOfAddresses, 'url':url, 'artist':artist, 'vidId':vidId, 'de':de, 'writer':writer, 'title':title }
+    if song[1] == "Rick Astley Never Gonna Give You Up":
+        de = "We couldn't find a song for this location, so have this complementary song instead."
+        num = 1
+    else:
+        de = ""
+    r = {'address':listOfAddresses, 'url':url, 'artist':artist, 'vidId':vidId, 'de':de, 'writer':writer, 'title':title, 'num':num }
     return json.dumps(r)
 
 @app.route("/search", methods = ["GET","POST"])

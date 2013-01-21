@@ -56,7 +56,12 @@ function placeMarker(location) {
 	//console.log(marker);
 	infowindow.open(map,marker);
 	//console.log(infowindow['content']);
-	codeLatLng(marker);
+	if (usePlaces){
+	    service.nearbySearch(request, callback);
+	}
+	else{
+	    codeLatLng(marker);
+	}
     });
 
 
@@ -72,7 +77,7 @@ function callback(results,status){
     useplace = usePlaces;
 
     $.getJSON("/update", {address:address},function(data){
-	$("#address").html(data['address']);
+	$("#address").html(data['address'].join(", "));
 	$("#url").empty();
 	var ref = $("<a></a>");
 	ref.attr('href',data['url']);
@@ -92,6 +97,8 @@ function callback(results,status){
 	$("#title").empty();
 	$("#title").append("Title: ");
 	$("#title").append(data['title']);
+	$("#numSongs").empty();
+	$("#numSongs").append(data['num']);
     }); 
 
 }
@@ -137,7 +144,7 @@ function markerAtAddress(){
     console.log(newAddress[2]);
     
     $.getJSON("/update", {address:address},function(data){
-	$("#address").html(data['address']);
+	$("#address").html(data['address'].join(", "));
 	$("#url").empty();
 	var ref = $("<a></a>");
 	ref.attr('href',data['url']);
@@ -157,6 +164,8 @@ function markerAtAddress(){
 	$("#title").empty();
 	$("#title").append("Title: ");
 	$("#title").append(data['title']);
+	$("#numSongs").empty();
+	$("#numSongs").append(data['num']);
     }); 
     
 }
@@ -191,7 +200,7 @@ function codeLatLng(marker) {
 	    $.getJSON("/update", {address:address},function(data){
 		$("#address").empty();
 		$("#address").append("Address or Place: ");
-		$("#address").append(data['address']);
+		$("#address").append(data['address'].join(", "));
 		$("#url").empty();
 		$("#url").append("Song URL: ");
 		var ref = $("<a></a>");
@@ -210,14 +219,17 @@ function codeLatLng(marker) {
 		$("#writer").append(data['writer']);
 		$("#title").empty();
 		$("#title").append(data['title']);
+		$("#numSongs").empty();
+		$("#numSongs").append(data['num']);
 	    }); 
 	}
+	
+   
 	else {
 	    address = undefined;
 	} 
     });
 
- 
     return 0;
 }
 
