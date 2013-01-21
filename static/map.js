@@ -5,6 +5,7 @@ var markersArray = [];
 var selected;
 var service;
 var usePlaces;
+var initialLocation;
 
 
 function initialize() {
@@ -12,8 +13,8 @@ function initialize() {
 
     geocoder = new google.maps.Geocoder();
     var mapOptions = {
-        center: new google.maps.LatLng(40.713956,-74.377441),
-        zoom: 11,
+        center: new google.maps.LatLng(40.717704,-74.013897),
+        zoom: 13,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     map = new google.maps.Map(document.getElementById("map_canvas"),
@@ -55,7 +56,12 @@ function placeMarker(location) {
 	//console.log(marker);
 	infowindow.open(map,marker);
 	//console.log(infowindow['content']);
-	codeLatLng(marker);
+	if (usePlaces){
+	    service.nearbySearch(request, callback);
+	}
+	else{
+	    codeLatLng(marker);
+	}
     });
 
 
@@ -71,13 +77,13 @@ function callback(results,status){
     useplace = usePlaces;
 
     $.getJSON("/update", {address:address},function(data){
-		$("#address").html(data['address']);
-		addVidList(data['vidId']);
-		addVideo(data['vidId'][0]);
-		$("#de").append(data['de']);
-		$("#writer").append(data['writer']);
-		$("#title").attr('href',data['url']).append(data['title']);
-		$("#songinfo").show();
+	$("#address").html(data['address']);
+	addVidList(data['vidId']);
+	addVideo(data['vidId'][0]);
+	$("#de").append(data['de']);
+	$("#writer").append(data['writer']);
+	$("#title").attr('href',data['url']).append(data['title']);
+	$("#songinfo").show();
     }); 
 
 }
@@ -108,9 +114,7 @@ function addressToLatLng(address){
 	    map.setCenter(x[2]);
  	}
 	else{
-	    alert("Geocode was not successful for the following reason: " + status)
 	    x = undefined;
-
 	}
     });
     return x;
@@ -125,13 +129,13 @@ function markerAtAddress(){
     console.log(newAddress[2]);
     
     $.getJSON("/update", {address:address},function(data){
-		$("#address").html(data['address']);
-		addVidList(data['vidId']);
-		addVideo(data['vidId'][0]);
-		$("#de").append(data['de']);
-		$("#writer").append(data['writer']);
-		$("#title").attr('href',data['url']).append(data['title']);
-		$("#songinfo").show();
+	$("#address").html(data['address']);
+	addVidList(data['vidId']);
+	addVideo(data['vidId'][0]);
+	$("#de").append(data['de']);
+	$("#writer").append(data['writer']);
+	$("#title").attr('href',data['url']).append(data['title']);
+	$("#songinfo").show();
     }); 
 
 }
@@ -139,7 +143,7 @@ function markerAtAddress(){
 
 
 function codeLatLng(marker) {
-//This allows you to click on a marker and return it's address.
+    //This allows you to click on a marker and return it's address.
     var address = "";
     var lat = marker.position["Ya"];
     var lng = marker.position["Za"];
@@ -163,24 +167,48 @@ function codeLatLng(marker) {
 		//console.log(address);
 	    }
 	    //address = hi;
-	    
 	    $.getJSON("/update", {address:address},function(data){
-			$("#address").html(data['address']);
-			addVidList(data['vidId']);
-			addVideo(data['vidId'][0]);
-			$("#de").append(data['de']);
-			$("#writer").append(data['writer']);
-			$("#title").attr('href',data['url']).append(data['title']);
-			$("#songinfo").show();
-    	}); 
+		$("#address").html(data['address']);
+		addVidList(data['vidId']);
+		addVideo(data['vidId'][0]);
+		$("#de").append(data['de']);
+		$("#writer").append(data['writer']);
+		$("#title").attr('href',data['url']).append(data['title']);
+		$("#songinfo").show();
+    	    }); 
 	}
+	
+   
 	else {
-	    alert("Geocoder failed due to: " + status);
-	}
+	    address = undefined;
+	} 
     });
-    
+
     return 0;
 }
+
+
+function getLocation(){
+    if (navigator.geolocation){
+	navigator.geolocation.getCurrentPosition(
+	    function(position) {
+		initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+		console.log(initialLocation);
+		placeMarker(initialLocation);
+		map.setCenter(initialLocation);
+	    }, 
+	    function() { }
+	);
+    } 
+    else{
+	initialLocation = null;
+	console.log("could not find location");
+	return;
+    }
+   // placeMarker(initialLocation);
+}
+
+
 
 
 
@@ -197,4 +225,5 @@ $(document).ready(function(){
     
     $("#place").click(function() {usePlaces = true; console.log("places=true");});
     $("#address").click(function() {usePlaces = false; console.log("places = false");});
+    $("#getLoc").click(getLocation);
 });
