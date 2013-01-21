@@ -77,13 +77,15 @@ function callback(results,status){
     useplace = usePlaces;
 
     $.getJSON("/update", {address:address},function(data){
-	$("#address").html(data['address']);
+	$("#ADD").html(data['address'].join(", "));
 	addVidList(data['vidId']);
 	addVideo(data['vidId'][0]);
-	$("#de").append(data['de']);
-	$("#writer").append(data['writer']);
 	$("#title").attr('href',data['url']).html("&ldquo;"+data['title']+"&rdquo;");
+	$("#de").html(data['de']);
+	$("#writer").html(data['writer']);
 	$("#songinfo").show();
+	$("#numSongs").empty();
+	$("#numSongs").append(data['num']);
     }); 
 
 }
@@ -129,13 +131,15 @@ function markerAtAddress(){
     console.log(newAddress[2]);
     
     $.getJSON("/update", {address:address},function(data){
-	$("#address").html(data['address']);
+	$("#ADD").html(data['address'].join(", "));
 	addVidList(data['vidId']);
 	addVideo(data['vidId'][0]);
-	$("#de").append(data['de']);
-	$("#writer").append(data['writer']);
 	$("#title").attr('href',data['url']).html("&ldquo;"+data['title']+"&rdquo;");
+	$("#de").html(data['de']);
+	$("#writer").html(data['writer']);
 	$("#songinfo").show();
+	$("#numSongs").empty();
+	$("#numSongs").append(data['num']);
     }); 
 
 }
@@ -167,18 +171,19 @@ function codeLatLng(marker) {
 		//console.log(address);
 	    }
 	    //address = hi;
+	   
 	    $.getJSON("/update", {address:address},function(data){
-		$("#address").html(data['address']);
+		$("#ADD").html(data['address'].join(", "));
 		addVidList(data['vidId']);
 		addVideo(data['vidId'][0]);
-		$("#de").append(data['de']);
-		$("#writer").append(data['writer']);
 		$("#title").attr('href',data['url']).html("&ldquo;"+data['title']+"&rdquo;");
+		$("#de").html(data['de']);
+		$("#writer").html(data['writer']);
 		$("#songinfo").show();
-    	    }); 
+		$("#numSongs").empty();
+		$("#numSongs").append(data['num']);
+    	    });  
 	}
-	
-   
 	else {
 	    address = undefined;
 	} 
