@@ -92,6 +92,8 @@ function callback(results,status){
 	$("#title").empty();
 	$("#title").append("Title: ");
 	$("#title").append(data['title']);
+	$("#numSongs").empty();
+	$("#numSongs").append(data['num']);
     }); 
 
 }
@@ -157,6 +159,8 @@ function markerAtAddress(){
 	$("#title").empty();
 	$("#title").append("Title: ");
 	$("#title").append(data['title']);
+	$("#numSongs").empty();
+	$("#numSongs").append(data['num']);
     }); 
     
 }
