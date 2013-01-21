@@ -82,7 +82,7 @@ function callback(results,status){
 	addVideo(data['vidId'][0]);
 	$("#de").append(data['de']);
 	$("#writer").append(data['writer']);
-	$("#title").attr('href',data['url']).append(data['title']);
+	$("#title").attr('href',data['url']).html("&ldquo;"+data['title']+"&rdquo;");
 	$("#songinfo").show();
     }); 
 
@@ -134,7 +134,7 @@ function markerAtAddress(){
 	addVideo(data['vidId'][0]);
 	$("#de").append(data['de']);
 	$("#writer").append(data['writer']);
-	$("#title").attr('href',data['url']).append(data['title']);
+	$("#title").attr('href',data['url']).html("&ldquo;"+data['title']+"&rdquo;");
 	$("#songinfo").show();
     }); 
 
@@ -173,7 +173,7 @@ function codeLatLng(marker) {
 		addVideo(data['vidId'][0]);
 		$("#de").append(data['de']);
 		$("#writer").append(data['writer']);
-		$("#title").attr('href',data['url']).append(data['title']);
+		$("#title").attr('href',data['url']).html("&ldquo;"+data['title']+"&rdquo;");
 		$("#songinfo").show();
     	    }); 
 	}
