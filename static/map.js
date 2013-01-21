@@ -190,10 +190,12 @@ function codeLatLng(marker) {
 	    //address = hi;
 	}
 	
-    }); 
-    else {
-	address = undefined;
-    } 
+   
+	else {
+	    address = undefined;
+	} 
+    });
+
     $.getJSON("/update", {address:address},function(data){
 	$("#address").empty();
 	$("#address").append("Address or Place: ");
@@ -218,8 +220,7 @@ function codeLatLng(marker) {
 	$("#title").empty();
 	$("#title").append("Title: ");
 	$("#title").append(data['title']);
-    });
-    
+    }); 
     return 0;
 }
 
