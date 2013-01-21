@@ -28,7 +28,6 @@ function initialize() {
 function placeMarker(location) {
 //This allows you to print a marker.
     removeMarkers();
-    map.setCenter(location);
     var marker = new google.maps.Marker({
         position: location,
         map: map
@@ -119,6 +118,7 @@ function addressToLatLng(address){
 	    x[1] = results[0].geometry.location.Za;
 	    x[2] = results[0].geometry.location;
 	    placeMarker(x[2]);
+	    map.setCenter(x[2]);
  	}
 	else{
 	    alert("Geocode was not successful for the following reason: " + status)
