@@ -5,6 +5,7 @@ var markersArray = [];
 var selected;
 var service;
 var usePlaces;
+var initialLocation;
 
 
 function initialize() {
@@ -12,7 +13,7 @@ function initialize() {
 
     geocoder = new google.maps.Geocoder();
     var mapOptions = {
-        center: new google.maps.LatLng(40.713956,-74.377441),
+        center: new google.maps.LatLng(40.717704,-74.013897),
         zoom: 11,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -28,7 +29,6 @@ function initialize() {
 function placeMarker(location) {
 //This allows you to print a marker.
     removeMarkers();
-    map.setCenter(location);
     var marker = new google.maps.Marker({
         position: location,
         map: map
@@ -119,6 +119,7 @@ function addressToLatLng(address){
 	    x[1] = results[0].geometry.location.Za;
 	    x[2] = results[0].geometry.location;
 	    placeMarker(x[2]);
+	    map.setCenter(x[2]);
  	}
 	else{
 	    alert("Geocode was not successful for the following reason: " + status)
@@ -225,11 +226,38 @@ function codeLatLng(marker) {
 }
 
 
+function getLocation(){
+    if (navigator.geolocation){
+	navigator.geolocation.getCurrentPosition(
+	    function(position) {
+		initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+		console.log(initialLocation);
+		placeMarker(initialLocation);
+	    }, 
+	    function() { }
+	);
+    } 
+    else{
+	initialLocation = null;
+	console.log("could not find location");
+	return;
+    }
+   // placeMarker(initialLocation);
+}
+
+
+
+
 
 $(document).ready(function(){
     $("#clear").click(removeMarkers);
     $("#remove").click(removeMark);
     $("#submit").click(markerAtAddress);
+    
+    //so you can press enter to search
+    $("#textbox").keypress( function(e){ if (e['keyCode'] == 13){ markerAtAddress(); } });
+    
     $("#usePlaces").click(function() {usePlaces = true; console.log("places=true");});
     $("#useAddress").click(function() {usePlaces = false; console.log("places = false");});
+    $("#getLoc").click(getLocation);
 });

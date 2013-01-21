@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <title>Sounds of the Streets</title>
 
     <style type="text/css">
       @import "{{ url_for('static', filename='style.css') }}";
@@ -20,7 +21,7 @@
 
     <div id="youtube">
       <iframe id="player" type="text/html" width="100%" height="100%"
-	      src="http://www.youtube.com/embed/hYWHJwyO5Gs?&enablejsapi=1&origin=http://example.com"
+	      src="http://www.youtube.com/embed/a8O3IkBgubc?&enablejsapi=1&origin=http://example.com"
 	      frameborder="0">
       </iframe>
     </div>
@@ -29,7 +30,7 @@
 
     <div id="bottombar">
       <div id="info">
-	<textarea id="textbox"></textarea>
+	<input type="text" id="textbox" />
 	<button id="submit" type="button">Search Address</button>
 	<button id="useAddress" type="button">Use Address to Search</button>
 	<button id="usePlaces" type="button">Use Places nearby location to search</button>
@@ -40,6 +41,7 @@
 	<!--	<div id="vidId" style="visibility:hidden;" >{{vidId}}</div>  -->
 	<div id="writer">Artist: {{writer}}</div>
 	<div id="title">Title: {{title}}</div>
+	<button id="getLoc" type="button">getLoc</button>
       </div>
       
       <div id="controls">

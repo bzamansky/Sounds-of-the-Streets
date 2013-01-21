@@ -6,7 +6,7 @@ i = 0;
 
 function makeVidPlaylist(){
     
-    listOfVids = ["FavUpD_IjVY","qybUFnY7Y8w"];
+    listOfVids = ["a8O3IkBgubc","FavUpD_IjVY","qybUFnY7Y8w"];
     i = 0;
     $("#nextVideo").click(function(){console.log(i);console.log("pressed"); $("#player").attr("src","http://www.youtube.com/embed/" + listOfVids[i] + "?autoplay=1&enablejsapi=1&origin=http://example.com"); i = i+1;});
 }  
