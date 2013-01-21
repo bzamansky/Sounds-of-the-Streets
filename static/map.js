@@ -72,7 +72,7 @@ function callback(results,status){
     useplace = usePlaces;
 
     $.getJSON("/update", {address:address},function(data){
-	$("#address").html(data['address']);
+	$("#address").html(data['address'].join(", "));
 	$("#url").empty();
 	var ref = $("<a></a>");
 	ref.attr('href',data['url']);
@@ -137,7 +137,7 @@ function markerAtAddress(){
     console.log(newAddress[2]);
     
     $.getJSON("/update", {address:address},function(data){
-	$("#address").html(data['address']);
+	$("#address").html(data['address'].join(", "));
 	$("#url").empty();
 	var ref = $("<a></a>");
 	ref.attr('href',data['url']);
@@ -191,7 +191,7 @@ function codeLatLng(marker) {
 	    $.getJSON("/update", {address:address},function(data){
 		$("#address").empty();
 		$("#address").append("Address or Place: ");
-		$("#address").append(data['address']);
+		$("#address").append(data['address'].join(", "));
 		$("#url").empty();
 		$("#url").append("Song URL: ");
 		var ref = $("<a></a>");
