@@ -210,6 +210,8 @@ function codeLatLng(marker) {
 		$("#writer").append(data['writer']);
 		$("#title").empty();
 		$("#title").append(data['title']);
+		$("#numSongs").empty();
+		$("#numSongs").append(data['num']);
 	    }); 
 	}
 	

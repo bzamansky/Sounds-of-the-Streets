@@ -46,10 +46,12 @@ def update():
         de = ""
     artist = song[1]
     vidId = youtube.makeParse(artist)
+    num = len(vidId)
+    print num
     #print vidId
     writer = song[2]
     title = song[3]
-    r = {'address':listOfAddresses, 'url':url, 'artist':artist, 'vidId':vidId, 'de':de, 'writer':writer, 'title':title }
+    r = {'address':listOfAddresses, 'url':url, 'artist':artist, 'vidId':vidId, 'de':de, 'writer':writer, 'title':title, 'num':num }
     return json.dumps(r)
 
 @app.route("/search", methods = ["GET","POST"])
