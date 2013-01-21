@@ -86,11 +86,10 @@ function callback(results,status){
 	$("#de").empty();
 	$("#de").append(data['de']);
 	$("#writer").empty();
-	$("#writer").append("Artist: ");
 	$("#writer").append(data['writer']);
 	$("#title").empty();
-	$("#title").append("Title: ");
 	$("#title").append(data['title']);
+	$("#songinfo").show();
     }); 
 
 }
@@ -153,11 +152,10 @@ function markerAtAddress(){
 	$("#de").empty();
 	$("#de").append(data['de']);
 	$("#writer").empty();
-	$("#writer").append("Artist: ");
 	$("#writer").append(data['writer']);
 	$("#title").empty();
-	$("#title").append("Title: ");
 	$("#title").append(data['title']);
+	$("#songinfo").show();
     }); 
     
 }
@@ -209,11 +207,10 @@ function codeLatLng(marker) {
 		$("#de").empty();
 		$("#de").append(data['de']);
 		$("#writer").empty();
-		$("#writer").append("Artist: ");
 		$("#writer").append(data['writer']);
 		$("#title").empty();
-		$("#title").append("Title: ");
 		$("#title").append(data['title']);
+		$("#songinfo").show();
 	    }); 
 	}
 	else {
@@ -227,6 +224,9 @@ function codeLatLng(marker) {
 
 
 $(document).ready(function(){
+	//hide the songinfo div since its empty
+	$("#songinfo").hide();
+	
     $("#clear").click(removeMarkers);
     $("#remove").click(removeMark);
     $("#submit").click(markerAtAddress);
