@@ -122,9 +122,7 @@ function addressToLatLng(address){
 	    map.setCenter(x[2]);
  	}
 	else{
-	    alert("Geocode was not successful for the following reason: " + status)
 	    x = undefined;
-
 	}
     });
     return x;
@@ -166,7 +164,7 @@ function markerAtAddress(){
 
 
 function codeLatLng(marker) {
-//This allows you to click on a marker and return it's address.
+    //This allows you to click on a marker and return it's address.
     var address = "";
     var lat = marker.position["Ya"];
     var lng = marker.position["Za"];
@@ -190,7 +188,6 @@ function codeLatLng(marker) {
 		//console.log(address);
 	    }
 	    //address = hi;
-	    
 	    $.getJSON("/update", {address:address},function(data){
 		$("#address").empty();
 		$("#address").append("Address or Place: ");
@@ -210,18 +207,17 @@ function codeLatLng(marker) {
 		$("#de").empty();
 		$("#de").append(data['de']);
 		$("#writer").empty();
-		$("#writer").append("Artist: ");
 		$("#writer").append(data['writer']);
 		$("#title").empty();
-		$("#title").append("Title: ");
 		$("#title").append(data['title']);
 	    }); 
 	}
 	else {
-	    alert("Geocoder failed due to: " + status);
-	}
+	    address = undefined;
+	} 
     });
-    
+
+ 
     return 0;
 }
 
@@ -233,6 +229,7 @@ function getLocation(){
 		initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
 		console.log(initialLocation);
 		placeMarker(initialLocation);
+		map.setCenter(initialLocation);
 	    }, 
 	    function() { }
 	);
