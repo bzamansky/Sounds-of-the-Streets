@@ -80,9 +80,9 @@ function callback(results,status){
 	$("#ADD").html(data['address'].join(", "));
 	addVidList(data['vidId']);
 	addVideo(data['vidId'][0]);
+	$("#title").attr('href',data['url']).html("&ldquo;"+data['title']+"&rdquo;");
 	$("#de").html(data['de']);
 	$("#writer").html(data['writer']);
-	$("#title").attr('href',data['url']).html(data['title']);
 	$("#songinfo").show();
 	$("#numSongs").empty();
 	$("#numSongs").append(data['num']);
@@ -134,9 +134,9 @@ function markerAtAddress(){
 	$("#ADD").html(data['address'].join(", "));
 	addVidList(data['vidId']);
 	addVideo(data['vidId'][0]);
+	$("#title").attr('href',data['url']).html("&ldquo;"+data['title']+"&rdquo;");
 	$("#de").html(data['de']);
 	$("#writer").html(data['writer']);
-	$("#title").attr('href',data['url']).html(data['title']);
 	$("#songinfo").show();
 	$("#numSongs").empty();
 	$("#numSongs").append(data['num']);
@@ -176,9 +176,9 @@ function codeLatLng(marker) {
 		$("#ADD").html(data['address'].join(", "));
 		addVidList(data['vidId']);
 		addVideo(data['vidId'][0]);
+		$("#title").attr('href',data['url']).html("&ldquo;"+data['title']+"&rdquo;");
 		$("#de").html(data['de']);
 		$("#writer").html(data['writer']);
-		$("#title").attr('href',data['url']).html(data['title']);
 		$("#songinfo").show();
 		$("#numSongs").empty();
 		$("#numSongs").append(data['num']);
