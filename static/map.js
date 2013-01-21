@@ -77,13 +77,12 @@ function callback(results,status){
     useplace = usePlaces;
 
     $.getJSON("/update", {address:address},function(data){
-	$("#address").empty();
-	$("#address").append(data['address'].join(", "));
+	$("#ADD").html(data['address'].join(", "));
 	addVidList(data['vidId']);
 	addVideo(data['vidId'][0]);
-	$("#de").append(data['de']);
-	$("#writer").append(data['writer']);
-	$("#title").attr('href',data['url']).append(data['title']);
+	$("#de").html(data['de']);
+	$("#writer").html(data['writer']);
+	$("#title").attr('href',data['url']).html(data['title']);
 	$("#songinfo").show();
 	$("#numSongs").empty();
 	$("#numSongs").append(data['num']);
@@ -132,13 +131,12 @@ function markerAtAddress(){
     console.log(newAddress[2]);
     
     $.getJSON("/update", {address:address},function(data){
-	$("#address").empty();
-	$("#address").append(data['address'].join(", "));
+	$("#ADD").html(data['address'].join(", "));
 	addVidList(data['vidId']);
 	addVideo(data['vidId'][0]);
-	$("#de").append(data['de']);
-	$("#writer").append(data['writer']);
-	$("#title").attr('href',data['url']).append(data['title']);
+	$("#de").html(data['de']);
+	$("#writer").html(data['writer']);
+	$("#title").attr('href',data['url']).html(data['title']);
 	$("#songinfo").show();
 	$("#numSongs").empty();
 	$("#numSongs").append(data['num']);
@@ -175,13 +173,12 @@ function codeLatLng(marker) {
 	    //address = hi;
 	   
 	    $.getJSON("/update", {address:address},function(data){
-		$("#address").empty();
-		$("#address").append(data['address'].join(", "));
+		$("#ADD").html(data['address'].join(", "));
 		addVidList(data['vidId']);
 		addVideo(data['vidId'][0]);
-		$("#de").append(data['de']);
-		$("#writer").append(data['writer']);
-		$("#title").attr('href',data['url']).append(data['title']);
+		$("#de").html(data['de']);
+		$("#writer").html(data['writer']);
+		$("#title").attr('href',data['url']).html(data['title']);
 		$("#songinfo").show();
 		$("#numSongs").empty();
 		$("#numSongs").append(data['num']);
