@@ -56,12 +56,6 @@ function placeMarker(location) {
 	//console.log(marker);
 	infowindow.open(map,marker);
 	//console.log(infowindow['content']);
-	if (usePlaces){
-	    service.nearbySearch(request, callback);
-	}
-	else{
-	    codeLatLng(marker);
-	}
     });
 
 
