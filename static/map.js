@@ -137,8 +137,7 @@ function markerAtAddress(){
 	$("#de").html(data['de']);
 	$("#writer").html(data['writer']);
 	$("#songinfo").show();
-	$("#numSongs").empty();
-	$("#numSongs").append(data['num']);
+	$("#numSongs").text(data['num']);
     }); 
 
 }

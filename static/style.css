@@ -11,7 +11,7 @@ button {   font-weight: bold;
 		   background-image:      -o-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
 		   background-image:         linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
 		   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.45);
-		   border-radius: 3px; }
+		   border-radius: 3px; padding: 0 12px; height: 25px; }
 
 header { width: 100%; height: 70px; background: #81DAF5;
 		 position: fixed; top: 0; z-index: 100; }
@@ -21,18 +21,21 @@ header { width: 100%; height: 70px; background: #81DAF5;
 		 		#logo h1 { font-size: 24px; margin: 0; }
 		 		#logo h2 { font-size: 14px; margin: 0; font-style: italic; }
 		 		
-		 header #search { width: 420px; height: 30px; display: inline; position: absolute; left: 320px; padding-top: 18px; }
+		 header #search { width: 460px; height: 30px; display: inline; position: absolute; left: 320px; padding-top: 18px; }
 		 		#search #textbox { width: 250px; height: 25px; border-radius: 5px; font-size: 18px; text-indent: 5px; }
-		 		#search button   { width: 70px;  height: 25px; }
 								   
     			#search .defaultTextActive { color: #a1a1a1; font-style: italic; }
 		 		
 		 header #settings { width: 440px; height: 70px; position: absolute; top: 0; right: 0; }
 		 		#settings h3 { display: inline; float: left; line-height: 70px; margin: 0; }
 		 		#settings #toggle { width: 300px; height: 30px; margin: 20px; float: right; }
+	
+#main { width: 100%; height: 100%; position: fixed; top: 70px; }
 		        
-#map_canvas { width: 45%; height: 100%; margin-top: 70px; float: left; }
+#map_canvas { width: 45%; height: 100%; float: left; }
 
-#youtube { width: 55%; height: 100%; margin-top: 70px; float: right; background: #81DAF5; }
+#youtube { width: 55%; height: 100%; float: right; background: #81DAF5; }
 
-#youtube #info { padding: 15px; }
+#youtube #info   { padding: 15px; text-align: center; line-height: 22px; }
+		 #info a { text-decoration: none; }
+		 #info button { margin-top: 20px; }
