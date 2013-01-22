@@ -74,16 +74,15 @@ function callback(results,status){
     useplace = usePlaces;
 
     $.getJSON("/update", {address:address},function(data){
-	$("#ADD").html(data['address'].join(", "));
-	addVidList(data['vidId']);
-	addVideo(data['vidId'][0]);
-	$("#title").attr('href',data['url']).html("&ldquo;"+data['title']+"&rdquo;");
-	$("#de").html(data['de']);
-	$("#writer").html(data['writer']);
-	$("#songinfo").show();
-	$("#numSongs").empty();
-	$("#numSongs").append(data['num']);
-	$("#total").html(data['num']);
+		$("#ADD").html(data['address'].join(", "));
+		addVidList(data['vidId']);
+		addVideo(data['vidId'][0]);
+		$("#title").attr('href',data['url']).html("&ldquo;"+data['title']+"&rdquo;");
+		$("#de").html(data['de']);
+		$("#writer").html(data['writer']);
+		$("#info").show();
+		$("#numSongs").html(data['num']);
+		$("#total").html(data['num']);
     }); 
 
 }
@@ -129,16 +128,15 @@ function markerAtAddress(){
     console.log(newAddress[2]);
     
     $.getJSON("/update", {address:address},function(data){
-	$("#ADD").html(data['address'].join(", "));
-	addVidList(data['vidId']);
-	addVideo(data['vidId'][0]);
-	$("#title").attr('href',data['url']).html("&ldquo;"+data['title']+"&rdquo;");
-	$("#de").html(data['de']);
-	$("#writer").html(data['writer']);
-	$("#songinfo").show();
-	$("#numSongs").empty();
-	$("#numSongs").append(data['num']);
-	$("#total").html(data['num']);
+		$("#ADD").html(data['address'].join(", "));
+		addVidList(data['vidId']);
+		addVideo(data['vidId'][0]);
+		$("#title").attr('href',data['url']).html("&ldquo;"+data['title']+"&rdquo;");
+		$("#de").html(data['de']);
+		$("#writer").html(data['writer']);
+		$("#info").show();
+		$("#numSongs").html(data['num']);
+		$("#total").html(data['num']);
     }); 
 
 }
@@ -172,17 +170,16 @@ function codeLatLng(marker) {
 	    //address = hi;
 	   
 	    $.getJSON("/update", {address:address},function(data){
-		$("#ADD").html(data['address'].join(", "));
-		addVidList(data['vidId']);
-		addVideo(data['vidId'][0]);
-		$("#title").attr('href',data['url']).html("&ldquo;"+data['title']+"&rdquo;");
-		$("#de").html(data['de']);
-		$("#writer").html(data['writer']);
-		$("#songinfo").show();
-		$("#numSongs").empty();
-		$("#numSongs").append(data['num']);
-		$("#total").html(data['num']);
-    	    });  
+			$("#ADD").html(data['address'].join(", "));
+			addVidList(data['vidId']);
+			addVideo(data['vidId'][0]);
+			$("#title").attr('href',data['url']).html("&ldquo;"+data['title']+"&rdquo;");
+			$("#de").html(data['de']);
+			$("#writer").html(data['writer']);
+			$("#info").show();
+			$("#numSongs").html(data['num']);
+			$("#total").html(data['num']);
+    	});  
 	}
 	else {
 	    address = undefined;
@@ -219,7 +216,7 @@ function getLocation(){
 
 $(document).ready(function(){
 	//hide the songinfo div since its empty
-	$("#songinfo").hide();
+	$("#info").hide();
 	
     $("#clear").click(removeMarkers);
     $("#remove").click(removeMark);

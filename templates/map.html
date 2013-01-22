@@ -40,6 +40,21 @@
     		$("#textbox").blur();        
 		});
 	</script>
+	
+	 <!-- Youtube Aspect Ratio and other heights -->
+	<script language="javascript">
+		$(document).ready(divResize);
+		$(window).resize(divResize);
+
+		function divResize() {			
+			var hgt = $('#youtube').width() / 16 * 9;
+			var maxHeight = $('body').height() - 110 - $('#info').height();
+			if (hgt > maxHeight)
+				$('iframe').attr('height',maxHeight+"px");
+			else
+				$('iframe').attr('height',hgt+"px");
+		}
+	</script>
 
   </head>
 
@@ -54,7 +69,7 @@
   		<div id="search">
   			<input type="text" id="textbox" title="enter an address or place" />
 			<button id="submit" type="button">Search</button>
-			<button id="getLoc" type="button">getLoc</button>
+			<button id="getLoc" type="button">Use My Location</button>
   		</div>
   		
   		<div id="settings">
@@ -71,37 +86,31 @@
 		</div>
   	</header>
   	
-    <div id="map_canvas"></div>
-    
-	<div id="youtube">
-		<iframe id="player" type="text/html" width="100%" height="100%"
-		  src="http://www.youtube.com/embed/a8O3IkBgubc?&enablejsapi=1&origin=http://example.com"
-		  frameborder="0">
-		</iframe>
+  	<div id="main">
+  	
+		<div id="map_canvas"></div>
 		
-		<div id="info">
-			<div id="location">Address or Place: <span id="ADD"></span></div>
-			<div id="de"></div>
+		<div id="youtube">
+			<iframe id="player" type="text/html" width="100%" height="100%"
+			  src="http://www.youtube.com/embed/a8O3IkBgubc?&enablejsapi=1&origin=http://example.com"
+			  frameborder="0">
+			</iframe>
 			
-			<div id="songinfo"><a id="title"></a> by <span id="writer"></span></div>
+			<div id="info">
+				<div id="ADD"></div>
+				<div id="de"></div>
+				<div id="songinfo"><a id="title"></a> by <span id="writer"></span></div>
 			
-			  
-			<div id="controls">
-			  <div id="songNum">Number of songs in playlist: <span id="numSongs"></span> <br> You are on song  <span id="num1"></span>  of  <span id="total"></span> </div>
-				  <button id="prevVideo" type="button">Previous Video</button>
-				  <button id="nextVideo" type="button">Next Video</button>
+				<div id="controls">
+			  		<div id="songNum">You are watching video <span id="num1"></span> of <span id="total"></span>.</div>
+				  	<button id="prevVideo" type="button">Previous Video</button>
+				  	<button id="nextVideo" type="button">Next Video</button>
+				</div>
 			</div>
 		</div>
+
 	</div>
 
-	
-
   </body>
-  
-  <!-- Youtube Aspect Ratio -->
-	<script language="javascript">
-		var hgt = $('#youtube').width() / 16 * 9;
-		$('iframe').attr('height',hgt+"px");
-	</script>
 	
 </html>
