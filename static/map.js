@@ -84,8 +84,7 @@ function callback(results,status){
 	$("#de").html(data['de']);
 	$("#writer").html(data['writer']);
 	$("#songinfo").show();
-	$("#numSongs").empty();
-	$("#numSongs").append(data['num']);
+	$("#numSongs").html(data['num']);
     }); 
 
 }
