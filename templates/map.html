@@ -48,7 +48,11 @@
 
 		function divResize() {			
 			var hgt = $('#youtube').width() / 16 * 9;
-			$('iframe').attr('height',hgt+"px");
+			var maxHeight = $('body').height() - 110 - $('#info').height();
+			if (hgt > maxHeight)
+				$('iframe').attr('height',maxHeight+"px");
+			else
+				$('iframe').attr('height',hgt+"px");
 		}
 	</script>
 
