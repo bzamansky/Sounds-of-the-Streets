@@ -36,6 +36,6 @@ header { width: 100%; height: 70px; background: #81DAF5;
 
 #youtube { width: 55%; height: 100%; float: right; background: #81DAF5; }
 
-#youtube #info   { padding: 15px; text-align: center; line-height: 22px; }
+#youtube #info   { padding: 15px; text-align: center; }
 		 #info a { text-decoration: none; }
 		 #info button { margin-top: 20px; }
