@@ -24,6 +24,9 @@ function initialize() {
     });
     service = new google.maps.places.PlacesService(map);
     usePlaces = false;
+
+    $("#total").html("0");
+    $("#num1").html("0");
 }
 
 function placeMarker(location) {
@@ -80,6 +83,7 @@ function callback(results,status){
 	$("#songinfo").show();
 	$("#numSongs").empty();
 	$("#numSongs").append(data['num']);
+	$("#total").html(data['num']);
     }); 
 
 }
@@ -134,6 +138,7 @@ function markerAtAddress(){
 	$("#songinfo").show();
 	$("#numSongs").empty();
 	$("#numSongs").append(data['num']);
+	$("#total").html(data['num']);
     }); 
 
 }
@@ -176,6 +181,7 @@ function codeLatLng(marker) {
 		$("#songinfo").show();
 		$("#numSongs").empty();
 		$("#numSongs").append(data['num']);
+		$("#total").html(data['num']);
     	    });  
 	}
 	else {
