@@ -24,6 +24,9 @@ function initialize() {
     });
     service = new google.maps.places.PlacesService(map);
     usePlaces = false;
+
+    $("#total").html("0");
+    $("#num1").html("0");
 }
 
 function placeMarker(location) {
@@ -56,12 +59,6 @@ function placeMarker(location) {
 	//console.log(marker);
 	infowindow.open(map,marker);
 	//console.log(infowindow['content']);
-	if (usePlaces){
-	    service.nearbySearch(request, callback);
-	}
-	else{
-	    codeLatLng(marker);
-	}
     });
 
 
@@ -86,6 +83,7 @@ function callback(results,status){
 	$("#songinfo").show();
 	$("#numSongs").empty();
 	$("#numSongs").append(data['num']);
+	$("#total").html(data['num']);
     }); 
 
 }
@@ -140,6 +138,7 @@ function markerAtAddress(){
 	$("#songinfo").show();
 	$("#numSongs").empty();
 	$("#numSongs").append(data['num']);
+	$("#total").html(data['num']);
     }); 
 
 }
@@ -182,6 +181,7 @@ function codeLatLng(marker) {
 		$("#songinfo").show();
 		$("#numSongs").empty();
 		$("#numSongs").append(data['num']);
+		$("#total").html(data['num']);
     	    });  
 	}
 	else {

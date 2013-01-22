@@ -13,6 +13,7 @@ function makeVidPlaylist(){
 
 function addVideo(vidId){
     $("#player").attr("src","http://www.youtube.com/embed/"+ vidId + "?autoplay=1&enablejsapi=1&origin=http://example.com")
+    $("#num1").html("1");
 }
 
 function addVidList(vidId){
@@ -23,11 +24,13 @@ function addVidList(vidId){
 function nextVid(){
     i = i + 1;
     if (i >= listOfVids.length){
-	i = listOfVids.length;
+	i = listOfVids.length - 1;
     }
     console.log(i);
     console.log("pressed"); 
     $("#player").attr("src","http://www.youtube.com/embed/" + listOfVids[i] + "?autoplay=1&enablejsapi=1&origin=http://example.com");
+    num = i + 1;
+    $("#num1").html(num);
 }
 
 function prevVid(){
@@ -38,6 +41,8 @@ function prevVid(){
     console.log(i);
     console.log("pressed");
     $("#player").attr("src","http://www.youtube.com/embed/" + listOfVids[i] + "?autoplay=1&enablejsapi=1&origin=http://example.com");
+    num = i + 1
+    $("#num1").html(num);
 				
 }
 
