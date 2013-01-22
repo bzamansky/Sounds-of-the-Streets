@@ -24,6 +24,9 @@ function initialize() {
     });
     service = new google.maps.places.PlacesService(map);
     usePlaces = false;
+
+    $("#total").html("0");
+    $("#num1").html("0");
 }
 
 function placeMarker(location) {
@@ -56,12 +59,6 @@ function placeMarker(location) {
 	//console.log(marker);
 	infowindow.open(map,marker);
 	//console.log(infowindow['content']);
-	if (usePlaces){
-	    service.nearbySearch(request, callback);
-	}
-	else{
-	    codeLatLng(marker);
-	}
     });
 
 
@@ -77,14 +74,15 @@ function callback(results,status){
     useplace = usePlaces;
 
     $.getJSON("/update", {address:address},function(data){
-	$("#ADD").html(data['address'].join(", "));
-	addVidList(data['vidId']);
-	addVideo(data['vidId'][0]);
-	$("#title").attr('href',data['url']).html("&ldquo;"+data['title']+"&rdquo;");
-	$("#de").html(data['de']);
-	$("#writer").html(data['writer']);
-	$("#songinfo").show();
-	$("#numSongs").html(data['num']);
+		$("#ADD").html(data['address'].join(", "));
+		addVidList(data['vidId']);
+		addVideo(data['vidId'][0]);
+		$("#title").attr('href',data['url']).html("&ldquo;"+data['title']+"&rdquo;");
+		$("#de").html(data['de']);
+		$("#writer").html(data['writer']);
+		$("#songinfo").show();
+		$("#numSongs").html(data['num']);
+		$("#total").html(data['num']);
     }); 
 
 }
@@ -130,14 +128,15 @@ function markerAtAddress(){
     console.log(newAddress[2]);
     
     $.getJSON("/update", {address:address},function(data){
-	$("#ADD").html(data['address'].join(", "));
-	addVidList(data['vidId']);
-	addVideo(data['vidId'][0]);
-	$("#title").attr('href',data['url']).html("&ldquo;"+data['title']+"&rdquo;");
-	$("#de").html(data['de']);
-	$("#writer").html(data['writer']);
-	$("#songinfo").show();
-	$("#numSongs").text(data['num']);
+		$("#ADD").html(data['address'].join(", "));
+		addVidList(data['vidId']);
+		addVideo(data['vidId'][0]);
+		$("#title").attr('href',data['url']).html("&ldquo;"+data['title']+"&rdquo;");
+		$("#de").html(data['de']);
+		$("#writer").html(data['writer']);
+		$("#songinfo").show();
+		$("#numSongs").html(data['num']);
+		$("#total").html(data['num']);
     }); 
 
 }
@@ -171,16 +170,16 @@ function codeLatLng(marker) {
 	    //address = hi;
 	   
 	    $.getJSON("/update", {address:address},function(data){
-		$("#ADD").html(data['address'].join(", "));
-		addVidList(data['vidId']);
-		addVideo(data['vidId'][0]);
-		$("#title").attr('href',data['url']).html("&ldquo;"+data['title']+"&rdquo;");
-		$("#de").html(data['de']);
-		$("#writer").html(data['writer']);
-		$("#songinfo").show();
-		$("#numSongs").empty();
-		$("#numSongs").append(data['num']);
-    	    });  
+			$("#ADD").html(data['address'].join(", "));
+			addVidList(data['vidId']);
+			addVideo(data['vidId'][0]);
+			$("#title").attr('href',data['url']).html("&ldquo;"+data['title']+"&rdquo;");
+			$("#de").html(data['de']);
+			$("#writer").html(data['writer']);
+			$("#songinfo").show();
+			$("#numSongs").html(data['num']);
+			$("#total").html(data['num']);
+    	});  
 	}
 	else {
 	    address = undefined;
