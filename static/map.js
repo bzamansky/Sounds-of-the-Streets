@@ -80,7 +80,7 @@ function callback(results,status){
 		$("#title").attr('href',data['url']).html("&ldquo;"+data['title']+"&rdquo;");
 		$("#de").html(data['de']);
 		$("#writer").html(data['writer']);
-		$("#songinfo").show();
+		$("#info").show();
 		$("#numSongs").html(data['num']);
 		$("#total").html(data['num']);
     }); 
@@ -134,7 +134,7 @@ function markerAtAddress(){
 		$("#title").attr('href',data['url']).html("&ldquo;"+data['title']+"&rdquo;");
 		$("#de").html(data['de']);
 		$("#writer").html(data['writer']);
-		$("#songinfo").show();
+		$("#info").show();
 		$("#numSongs").html(data['num']);
 		$("#total").html(data['num']);
     }); 
@@ -176,7 +176,7 @@ function codeLatLng(marker) {
 			$("#title").attr('href',data['url']).html("&ldquo;"+data['title']+"&rdquo;");
 			$("#de").html(data['de']);
 			$("#writer").html(data['writer']);
-			$("#songinfo").show();
+			$("#info").show();
 			$("#numSongs").html(data['num']);
 			$("#total").html(data['num']);
     	});  
@@ -216,7 +216,7 @@ function getLocation(){
 
 $(document).ready(function(){
 	//hide the songinfo div since its empty
-	$("#songinfo").hide();
+	$("#info").hide();
 	
     $("#clear").click(removeMarkers);
     $("#remove").click(removeMark);
