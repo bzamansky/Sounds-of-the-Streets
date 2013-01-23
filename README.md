@@ -2,8 +2,7 @@ Sounds of the Streets
 =====================
 
 
-BZ-SD
-=====
+<h3>BZ-SD</h3>
 
 <h3>Batya Zamansky - Sarah Duncan</h3>
 <h4>Batya &sdot; Zachary &sdot; Sarah &sdot; Denis</h4>
