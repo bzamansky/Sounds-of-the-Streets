@@ -21,13 +21,15 @@ Sounds of the Streets
 **Tools used to make this project**
 * Google Maps api (including their places library)
 * Last.fm api
+* Youtube API
 * Donut Budget
+* Dumb Ways to Die
 
 **How to use:**
 * Click on the map to get a song based on the clicked location
-* Use the toggle bar to decide whether to search for songs based on the address of the location or of places nearby the location
-* You can also enter an address into the search bar to find it
-* You can also press the 'Use My Location' button to get your current location
+* Use the toggle bar to search for songs based on the address of the location or of places nearby the location
+* You can enter an address or place into the search bar to find it
+* Press the 'Use My Location' button to get your current location
 * The youtube video will auto-play when you choose a location
 * When you finish the current song you can go through the list of songs found at that location
 
