@@ -6,18 +6,25 @@ BZ-SD
 
 **Project: Musical Maps**
 * Plays a song based on current (or entered) location
-* Howard announces the song name, artist, etc.
-* Lyric Sidebar
-* Images based on key words in the song
-* Simple Visualizer  
-* Link to Pandora playlist based on the current song
-
-**Tools**
-* Howard's voice
-* Donut Budget
-* Cool icon
 
 
-**Things that need to be installed**
+<h3>How to use this project:</h3>
+**Install these plugins**
 * pip install --upgrade google-api-python-client
-* googlemaps
+* pip install google maps
+
+
+**Tools used to make this project**
+* Google Maps api (including their places library)
+* Last.fm api
+* Donut Budget
+
+**How to use:**
+* Click on the map to get a song based on the clicked location
+* Use the toggle bar to decide whether to search for songs based on the address of the location or of places nearby the location
+* You can also enter an address into the search bar to find it
+* You can also press the 'Use My Location' button to get your current location
+* The youtube video will auto-play when you choose a location
+* When you finish the current song you can go through the list of songs found at that location
+
+**Enjoy!**
