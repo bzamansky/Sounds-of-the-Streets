@@ -146,8 +146,8 @@ function markerAtAddress(){
 function codeLatLng(marker) {
     //This allows you to click on a marker and return it's address.
     var address = "";
-    var lat = marker.position["Ya"];
-    var lng = marker.position["Za"];
+    var lat = marker.position["d"];
+    var lng = marker.position["e"];
     var latlng = new google.maps.LatLng(lat, lng);
     geocoder.geocode({'latLng': latlng}, function(results, status) {
 	if (status == google.maps.GeocoderStatus.OK) {
