@@ -2,7 +2,7 @@ import utils
 import map_utils
 import youtube
 import json, urllib2
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session
 
 
 app = Flask(__name__)
@@ -47,6 +47,7 @@ def update():
     else:
         de = ""
     r = {'address':listOfAddresses, 'url':url, 'artist':artist, 'vidId':vidId, 'de':de, 'writer':writer, 'title':title, 'num':num }
+    print r
     return json.dumps(r)
 
 @app.route("/search", methods = ["GET","POST"])
