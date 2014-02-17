@@ -29,15 +29,10 @@ def update():
     de = ""
     writer = ""
     title = ""
-    #print(address)
-    
+
     listOfAddresses = []
     listOfAddresses = address.split(";")
 
-    #print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-    for place in listOfAddresses:
-        print(place)
-    #print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     song = utils.getSong2(Last_key,listOfAddresses)
     url = song[0]
     artist = song[1]
